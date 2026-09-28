@@ -1,15 +1,14 @@
-
-/* Default font for body */
+/* Default font for body - Kills the Serif font globally */
 body {
-    font-family: "Lora", serif !important;
+    font-family: "Roboto", sans-serif !important;
 }
 
-/* secondary font */
+/* secondary font (Used for text/paragraphs) */
 .secondary-font, #secondary-font {
-    font-family: "Lora", serif;
+    font-family: "Roboto", sans-serif;
 }
 
-/* primary font */
+/* primary font (Used for Headings & Titles) */
 .primary-font, #primary-font {
     font-family: "Alata", sans-serif;
 }

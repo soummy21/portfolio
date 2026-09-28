@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mythbound | Soumya Thakur</title>
+    
+    <link rel="icon" href="/portfolio/images/mainpage/portfolio_icon.jpg" type="image/gif">
+    <!-- Prism Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/portfolio/css/font.css" media="all">
+    <link rel="stylesheet" href="/portfolio/bootstrap-5/css/bootstrap.min.css" media="all">
+    <link rel="stylesheet" href="/portfolio/css/header.css" media="all">
+    <link rel="stylesheet" href="/portfolio/css/footer.css" media="all">
+    <link rel="stylesheet" href="/portfolio/css/custom.css" media="all">
+    <link rel="stylesheet" href="/portfolio/css/theme.css" media="all">
+    
+    <script defer src="/portfolio/fontawesome-5/all-5.15.4.js"></script>
+
+<style>
+    .hero-title {
+        color: var(--text-color) !important;
+        letter-spacing: -0.03em;
+        line-height: 1.1;
+    }
+    .hero-text {
+        color: var(--text-secondary-color);
+    }
+    .line-sep {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Bigger Tools Icons */
+    .tool-icon, .tool-icon-reverse {
+        width: 32px;
+        height: 32px;
+        object-fit: contain;
+        transition: transform 0.2s ease, filter 0.2s ease;
+    }
+    .tool-icon-reverse {
+        filter: invert(1);
+    }
+    .tool-icon:hover, .tool-icon-reverse:hover {
+        transform: translateY(-3px) scale(1.08);
+    }
+    
+    .platform-badge {
+        font-size: 1.35rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    /* Massive Role Header */
+    .role-headline {
+        font-size: 1.6rem;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+        color: #ffc107;
+        line-height: 1.1;
+        text-transform: uppercase;
+    }
+
+    /* New style for the underlined header */
+    .section-header-underline {
+        font-size: 1.75rem; /* Bigger font size */
+        border-bottom: 2px solid #ffc107; /* The underline */
+        padding-bottom: 0.25rem;
+        display: inline-block;
+        margin-bottom: 0.5rem;
+    }
+
+    /* Clean list links - NO BORDERS */
+    .contrib-link {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.8rem 0; /* Vertical breathing room, no side padding */
+        background: transparent;
+        border: none;
+        color: rgba(255, 255, 255, 0.85) !important;
+        text-decoration: none;
+        font-size: 1.05rem;
+        transition: all 0.25s ease;
+    }
+    .contrib-link:hover {
+        color: #ffc107 !important;
+        transform: translateX(8px);
+    }
+    
+    /* Updated for the link icon */
+    .contrib-icon {
+        color: rgba(255, 255, 255, 0.2);
+        font-size: 0.95rem;
+        transition: transform 0.25s ease, color 0.25s ease;
+    }
+    .contrib-link:hover .contrib-icon {
+        color: #ffc107;
+    }
+
+    /* Make the video pop off the background */
+    .hero-media {
+        width: 100%;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        background-color: #000;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+    }
+    
+    /* FROSTED GLASS CONTAINER FOR CONTENT */
+    .glass-panel {
+        position: relative;
+        z-index: 1;
+        background: rgba(18, 19, 23, 0.85); /* Dark translucent background */
+        backdrop-filter: blur(12px); /* Blurs the game art ONLY directly behind the text/video */
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 1rem;
+        padding: 2.5rem;
+        box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    }
+
+    /* --- BULLETPROOF FIXED BACKGROUND --- */
+    body {
+        background-color: #101114 !important;
+    }
+
+    #content {
+        position: relative;
+        z-index: 1;
+    }
+
+    #content::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: url('/portfolio/images/projects/mythbound_bg.jpg') no-repeat center center;
+        background-size: cover;
+        opacity: 0.35;
+        z-index: -1;
+        pointer-events: none;
+    }
+
+    footer {
+        background-color: #101114 !important;
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Section & Blueprint container styling */
+    .blueprint-frame {
+        width: 100%;
+        height: 480px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 0.5rem;
+        background: #0d0e12;
+    }
+
+    pre[class*="language-"] {
+        background: rgba(0, 0, 0, 0.65) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-radius: 0.5rem;
+        font-size: 0.88rem;
+        margin: 0;
+    }
+</style>
+</head>
+
+<body class="light" onload="loading()">
+    
+    <script src="/portfolio/bootstrap-5/js/bootstrap.bundle.js"></script>
+    <script>
+        if (localStorage.getItem("pref-theme") === "dark") {
+            document.body.classList.add('dark');
+        } else if (localStorage.getItem("pref-theme") === "light") {
+            document.body.classList.remove('dark');
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.classList.add('dark');
+        }
+    </script>
+
+    <!-- Navigation -->
+    <header>
+        <nav class="pt-3 navbar navbar-expand-lg">
+            <div class="container-fluid mx-xs-2 mx-sm-5 mx-md-5 mx-lg-5">
+                <a class="navbar-brand primary-font text-wrap" href="/portfolio">
+                    <img src="/portfolio/images/mainpage/portfolio_icon.jpg" width="30" height="30" class="d-inline-block align-top">
+                    Soumya Thakur
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars hero-title"></i>
+                </button>
+                <div class="collapse navbar-collapse text-wrap primary-font" id="navbarContent">
+                    <ul class="navbar-nav ms-auto text-center">                                     
+                        <li class="nav-item navbar-text"><a class="nav-link" href="/portfolio/#projects">Featured</a></li>
+                        <li class="nav-item navbar-text"><a class="nav-link" href="/portfolio/project-vault/">Project Vault</a></li>
+                        <li class="nav-item navbar-text"><a class="nav-link" href="/portfolio/#about">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- CONTENT-->
+    <div id="content">
+        
+        <!-- HERO SECTION -->
+        <section class="py-5 pt-4">
+            <div class="container" style="max-width: 1120px;">
+                <div class="glass-panel">
+                    
+                    <!-- TOP HEADER: Split left/right -->
+                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
+                        <h1 class="fw-bolder display-4 hero-title mb-0">Mythbound</h1>
+                        
+                        <div class="d-flex align-items-center gap-3 mt-2 mt-md-0">
+                            <span class="fs-6 fw-bold text-warning" style="letter-spacing: 0.05em;">OCT 2025 - PRESENT</span>
+                            <span class="text-secondary opacity-50">|</span>
+                            <div class="platform-badge">
+                                <img src="/portfolio/images/icons/windows.png" alt="Windows" title="Windows" class="tool-icon-reverse" style="width: 24px; height: 24px;">
+                                <img src="/portfolio/images/icons/steam.png" alt="Steam" title="Steam" class="tool-icon" style="width: 24px; height: 24px;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TOOLS USED -->
+                    <div class="d-flex flex-wrap align-items-center gap-3 mb-4">
+                        <span class="text-uppercase fw-bold text-secondary big" style="letter-spacing: 0.08em;">Tools Used</span>
+                        <div class="d-flex flex-wrap align-items-center gap-2">
+                            <img src="/portfolio/images/icons/c++.png" alt="C++" title="C++" class="tool-icon">
+                            <img src="/portfolio/images/icons/ue5-dark.png" alt="Unreal Engine" title="Unreal Engine 5" class="tool-icon">
+                            <img src="/portfolio/images/icons/rider.png" alt="JetBrains Rider" title="JetBrains Rider" class="tool-icon">
+                            <img src="/portfolio/images/icons/jenkins.png" alt="Jenkins" title="Jenkins" class="tool-icon">
+                            <img src="/portfolio/images/icons/jira.png" alt="Jira" title="Jira" class="tool-icon">
+                            <img src="/portfolio/images/icons/perforce.png" alt="Perforce" title="Perforce" class="tool-icon">
+                            <img src="/portfolio/images/icons/figma.png" alt="Figma" title="Figma" class="tool-icon">
+                        </div>
+                    </div>
+
+                    <div class="line-sep mb-4"></div>
+
+                    <!-- HERO MAIN: VIDEO + ROLE -->
+                    <div class="row g-5 align-items-center">
+                        
+                        <!-- Left: Fight Video -->
+                        <div class="col-12 col-lg-7">
+                            <div class="hero-media ratio ratio-16x9">
+                                <video autoplay loop muted playsinline preload="metadata" class="w-100 h-100 object-fit-cover">
+                                    <source src="content/fight.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
+
+                        <!-- Right: Massive Role & Contributions -->
+                        <div class="col-12 col-lg-5">
+                            <div class="text-start">
+                                
+                                <!-- Stacked Role -->
+                                <div class="mb-1">
+                                    <span class="text-uppercase text-secondary fw-bold" style="letter-spacing: 0.1em; font-size: 0.8rem;">Contributions as:</span>
+                                    <div class="role-headline mt-1">Technical Lead</div>
+                                </div>
+                                
+                                <!-- Clickable Link Rows -->
+                                <div class="d-flex flex-column">
+                                    <a href="#sliding-mechanic" class="contrib-link">
+                                        <span><u> Prototyping and Implementing Slide Mechanics </u></span>
+                                        <i class="fas fa-external-link-alt contrib-icon" style="font-size: 0.85rem;"></i>
+                                    </a>
+                                    <a href="#client-prediction" class="contrib-link">
+                                        <span><u>Client Side Prediction for Slide</u></span>
+                                        <i class="fas fa-external-link-alt contrib-icon" style="font-size: 0.85rem;"></i>
+                                    </a>
+                                    <a href="#eos-lobbies" class="contrib-link">
+                                        <span><u>Building the Lobby System using EOS and Common UI</u></span>
+                                        <i class="fas fa-external-link-alt contrib-icon" style="font-size: 0.85rem;"></i>
+                                    </a>
+                                    <a href="#jenkins-ci-cd" class="contrib-link">
+                                        <span><u>Build Automation using Jenkins</u></span>
+                                        <i class="fas fa-external-link-alt contrib-icon" style="font-size: 0.85rem;"></i>
+                                    </a>
+                                    <a href="#technical-leadership" class="contrib-link">
+                                        <span><u>Technical Lead Duties</u></span>
+                                        <i class="fas fa-external-link-alt contrib-icon" style="font-size: 0.85rem;"></i>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- END HERO GLASS PANEL -->
+            </div>
+        </section>
+        
+        <!-- ============================================== -->
+        <!-- SECTION 01: SLIDE MECHANICS                    -->
+        <!-- ============================================== -->
+        <section class="pb-5">
+            <div class="container" style="max-width: 1120px;">
+                <div id="sliding-mechanic" class="glass-panel">
+                    
+                    <!-- Minimal Title -->
+                    <div class="mb-4 pb-3 border-bottom border-secondary" style="border-color: rgba(255,255,255,0.1) !important;">
+                        <h2 class="fw-bolder hero-title mb-0">Prototyping &amp; Implementing Slide Mechanics</h2>
+                    </div>
+
+                    <!-- Video & Text Row -->
+                    <div class="row g-4 g-lg-5 align-items-start mb-4">
+                        
+                        <!-- Left: Video (No caption) -->
+                        <div class="col-12 col-lg-7">
+                            <div class="hero-media ratio ratio-16x9">
+                                <video autoplay loop muted playsinline preload="metadata" class="w-100 h-100 object-fit-cover">
+                                    <source src="content/slide_types.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
+
+                        <!-- Right: Text Only -->
+                        <div class="col-12 col-lg-5">
+                            <div class="mb-3">
+                                <h3 class="fw-bolder hero-title display-6" style="font-size: 1.5rem; letter-spacing: -0.02em;">
+                                    Extending Character Movement Component
+                                </h3>
+                                <div style="width: 48px; height: 3px; background: #ffc107; border-radius: 2px;" class="mt-2 mb-3"></div>
+                            </div>
+
+                            <p class="hero-text mb-0" style="font-size: 1rem; line-height: 1.6;">
+                                Our designers needed a slide that would be used as a way to allow macro movements across the map. <br> Hence, I built a custom <code>CMOVE_Slide</code> mode that controls the entire movement lifecycle natively. It uses vector dot products to prevent uphill sliding, projects entry velocity flush against the floor normal to prevent bouncing, injects continuous downhill gravity, and overrides the base jump function to allow momentum-preserving slide-jumps.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <!-- Full-Width Code Snippet -->
+                    <div class="mb-5">
+<pre><code class="language-cpp">// Prevent sliding up steep ramps using Dot Products
+bool UAdvMovementComponent::CanSlide(FHitResult& SlideSurface, bool bForStateEnter) const
+{
+    // ... [Line trace logic to find surface] ...
+    
+    // A negative dot product means velocity is pointing into the slope
+    float SlopeDot = FVector::DotProduct(Velocity.GetSafeNormal2D(), SlideSurface.ImpactNormal);
+    bool bIsUphill = SlopeDot < -0.1f;
+
+    bool bSufficientVelocity = Velocity.SizeSquared() > FMath::Square(SlideEnterSpeed);
+    return (!bForStateEnter || (bOnSlideSurface && !bIsUphill)) && bSufficientVelocity;
+}
+
+// Project velocity perfectly along the slope
+void UAdvMovementComponent::OnEnterSlide()
+{
+    // Enforce minimum entry burst speed
+    if (Velocity.SizeSquared2D() < FMath::Square(SlideEnterImpulse)) {
+        Velocity = Velocity.GetSafeNormal2D() * SlideEnterImpulse + Velocity.Z * FVector::UpVector;
+    }
+    // Prevent clipping/bouncing by projecting velocity onto the floor impact plane
+    if (CurrentFloor.bBlockingHit) {
+        Velocity = FVector::VectorPlaneProject(Velocity, CurrentFloor.HitResult.ImpactNormal);
+    }
+}
+
+// Inject downhill acceleration
+void UAdvMovementComponent::PhysSlide(float DeltaTime, int32 Iterations)
+{
+    // Gain speed on slopes
+    FVector SlopeForce = CurrentFloor.HitResult.Normal;
+    SlopeForce.Z = 0.f;
+    Velocity += SlopeForce * SlideGravityForce * DeltaTime;
+
+    // Apply custom sliding friction natively
+    CalcVelocity(TimeTick, GroundFriction * SlideFrictionFactor, false, GetMaxBrakingDeceleration());
+    
+    // ... [MoveAlongFloor execution] ...
+}
+
+// Preserve momentum into an aerial launch
+bool UAdvMovementComponent::DoJump(bool bReplayingMoves)
+{
+    if (IsCustomMovementMode(CMOVE_Slide) && SlideJumpTimingWindowDuration > 0)
+    {
+        // Apply momentum multiplier to launch the character
+        Velocity.Z = FMath::Max<FVector::FReal>(Velocity.Z, JumpZVelocity * SlideJumpMultiplier);
+        SetMovementMode(MOVE_Falling);
+        OnSlideJumpDelegate.Broadcast();
+        return true;
+    }
+    
+
+}</code></pre>
+                    </div>
+
+                    <!-- GAS Blueprint Architecture & Embedded Graph -->
+                    <div class="pt-4 border-top" style="border-color: rgba(255,255,255,0.08) !important;">
+                        <div class="d-flex flex-wrap justify-content-between align-items-baseline mb-2">
+                            <div class="mb-3">
+                                <h3 class="fw-bolder hero-title display-6 mb-0" style="font-size: 1.5rem; letter-spacing: -0.02em;">
+                                    State Coordination via Gameplay Ability System
+                                </h3>
+                                <div style="width: 48px; height: 3px; background: #ffc107; border-radius: 2px;" class="mt-2 mb-0"></div>
+                            </div>
+                            <span class="text-secondary small">Interactive Blueprint &bull; Click and drag to pan</span>
+                        </div>
+
+                        <p class="hero-text mb-4" style="font-size: 1.1rem; line-height: 1.6;">
+                            While C++ manages the physics simulation, <code>GA_Slide</code> handles the state machine. It validates stamina costs and applies the <code>State.Movement.Sliding</code> tag to lock out conflicting abilities until the CMC function signals the slide has ended.
+                        </p>
+
+                        <!-- BlueprintUE Embedded iFrame -->
+                        <div class="blueprint-frame overflow-hidden">
+                            <iframe src="https://blueprintue.com/render/uewktwqz/" width="100%" height="100%" scrolling="no" allowfullscreen frameborder="0"></iframe>
+                        </div>
+                    </div>
+
+                </div> <!-- END SECTION 01 GLASS PANEL -->
+            </div>
+        </section>
+
+        <!-- ============================================== -->
+        <!-- SECTION 02: CLIENT-SIDE PREDICTION             -->
+        <!-- ============================================== -->
+        <section class="pb-5">
+            <div class="container" style="max-width: 1120px;">
+                <div id="client-prediction" class="glass-panel">
+                    
+                    <!-- Section Header -->
+                    <div class="mb-4 pb-3 border-bottom border-secondary" style="border-color: rgba(255,255,255,0.1) !important;">
+                        <h2 class="fw-bolder hero-title mb-0">Client Side Prediction for Slide</h2>
+                    </div>
+
+                      <!-- Video & Narrative Row -->
+                    <div class="row g-4 g-lg-5 align-items-start mb-5">
+                        
+                        <!-- Left: Client vs Server Video with Label -->
+                        <div class="col-12 col-lg-7">
+                            <div class="hero-media ratio ratio-16x9">
+                                <video autoplay loop muted playsinline preload="metadata" class="w-100 h-100 object-fit-cover">
+                                    <source src="content/csp.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                            <small class="text-secondary d-block text-center mt-2" style="font-size: 0.85rem;">
+                                Client sliding smoothly at 350ms ping 
+                            </small>
+                        </div>
+
+                        <!-- Right: Narrative & Design Motivation -->
+                        <div class="col-12 col-lg-5">
+                            <div class="mb-3">
+                                <h3 class="fw-bolder hero-title display-6" style="font-size: 1.5rem; letter-spacing: -0.02em;">
+                                    Zero-Latency Responsiveness
+                                </h3>
+                                <div style="width: 48px; height: 3px; background: #ffc107; border-radius: 2px;" class="mt-2 mb-3"></div>
+                            </div>
+
+                            <p class="hero-text mb-0" style="font-size: 1rem; line-height: 1.6;">
+                                In a fast-paced arena brawler, waiting for server round-trips to initiate high-speed slides or modify capsule collision makes combat feel unresponsive. However, locally predicting custom physics without reconciling state with the server leads to aggressive correction snaps and rubberbanding.
+                                <br><br>
+                                To make movement feel instantaneous regardless of ping, I extended Unreal's <code>FSavedMove_Character</code> pipeline to store, compress, and replay our custom slide and movement parameters across the network.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <!-- Architecture Diagram: Side-by-Side Row -->
+                    <div class="pt-4 mb-5 border-top" style="border-color: rgba(255,255,255,0.08) !important;">
+                        <div class="row g-4 g-lg-5 align-items-center">
+                            
+                            <!-- Left: Tall Diagram in Clean Frame -->
+                            <div class="col-12 col-lg-5">
+                                <div class="p-2 rounded text-center" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1);">
+                                    <img src="content/csp_diagram.png" alt="Client-Side Prediction Pipeline Diagram" class="img-fluid rounded" style="max-height: 520px; width: auto; object-fit: contain;">
+                                </div>
+                            </div>
+
+                            <!-- Right: Explanation & Breakdown -->
+                            <div class="col-12 col-lg-7">
+                                <div class="mb-3">
+                                    <h3 class="fw-bolder hero-title display-6" style="font-size: 1.5rem; letter-spacing: -0.02em;">
+                                        SavedMove Replication Lifecycle
+                                    </h3>
+                                    <div style="width: 48px; height: 3px; background: #ffc107; border-radius: 2px;" class="mt-2 mb-3"></div>
+                                </div>
+
+                                <p class="hero-text mb-3" style="font-size: 1rem; line-height: 1.6;">
+                                    The client simulates and applies <code>PhysSlide</code> immediately while pushing the move into an unacknowledged move buffer. 
+                                </p>
+
+                                <ul class="list-unstyled hero-text small mb-0 d-flex flex-column gap-2" style="font-size: 1.1rem; line-height: 1.5;">
+                                    <li>
+                                        <i class="fas fa-chevron-right text-warning me-2"></i><strong>Step 1 (Client Sim):</strong> Enters <code>CMOVE_Slide</code> locally and packages serialized movement variables into <code>FSavedMove_Adv</code>.
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-chevron-right text-warning me-2"></i><strong>Step 2 (Network Dispatch):</strong> Sends compressed input flags across latency to the authoritative server.
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-chevron-right text-warning me-2"></i><strong>Case 1 (Valid State):</strong> Server validates GAS stamina tags, runs physics, and sends an ACK. The client drops the acknowledged move buffer with zero position snap.
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-chevron-right text-warning me-2"></i><strong>Case 2 (State Divergence):</strong> If the server detects a desync, it transmits the authoritative transform, rolling back the client to replay unacknowledged moves seamlessly.
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Full-Width Code Snippet (FSavedMove Pipeline) -->
+                    <div class="pt-4 border-top" style="border-color: rgba(255,255,255,0.08) !important;">
+                        <div class="mb-3">
+                            <h3 class="fw-bolder hero-title display-6" style="font-size: 1.5rem; letter-spacing: -0.02em;">
+                                Custom State Serialization &amp; Rollback Replay
+                            </h3>
+                            <div style="width: 48px; height: 3px; background: #ffc107; border-radius: 2px;" class="mt-2 mb-3"></div>
+                        </div>
+
+<pre><code class="language-cpp">// Compress custom input states into a single replicated byte
+uint8 UAdvMovementComponent::FSavedMove_Adv::GetCompressedFlags() const
+{
+    uint8 Result = Super::GetCompressedFlags();
+
+    if (Saved_bWantsToSprint) { Result |= FLAG_Sprint; }
+    if (Saved_bJumpHook)      { Result |= FLAG_JumpPressed; }
+
+    return Result;
+}
+
+// Snapshot custom movement variables before network dispatch
+void UAdvMovementComponent::FSavedMove_Adv::SetMoveFor(ACharacter* C, float InDeltaTime, FVector const& NewAccel, FNetworkPredictionData_Client_Character& ClientData)
+{
+    Super::SetMoveFor(C, InDeltaTime, NewAccel, ClientData);
+    UAdvMovementComponent* AdvMovement = Cast&lt;UAdvMovementComponent&gt;(C->GetCharacterMovement());
+
+    Saved_bWantsToSprint         = AdvMovement->bWantsToSprint;
+    Saved_bPrevWantsToCrouch     = AdvMovement->bPrevWantsToCrouch;
+    Saved_PreSlideHalfHeight     = AdvMovement->PreSlideHalfHeight;
+    Saved_CurrentSpeedMultiplier = AdvMovement->CurrentSpeedMultiplier;
+    Saved_QueuedMotions          = AdvMovement->QueuedMotions;
+}
+
+// Unpack saved states when replaying previous moves during server reconciliation
+void UAdvMovementComponent::FSavedMove_Adv::PrepMoveFor(ACharacter* C)
+{
+    Super::PrepMoveFor(C);
+    UAdvMovementComponent* AdvMovement = Cast&lt;UAdvMovementComponent&gt;(C->GetCharacterMovement());
+
+    AdvMovement->bWantsToSprint         = Saved_bWantsToSprint;
+    AdvMovement->bWantsToCrouch         = Saved_bPrevWantsToCrouch;
+    AdvMovement->PreSlideHalfHeight     = Saved_PreSlideHalfHeight;
+    AdvMovement->CurrentSpeedMultiplier = Saved_CurrentSpeedMultiplier;
+    AdvMovement->QueuedMotions          = Saved_QueuedMotions;
+}</code></pre>
+                    </div>
+
+                </div> <!-- END SECTION 02 GLASS PANEL -->
+            </div>
+        </section>
+
+        <!-- ============================================== -->
+        <!-- SECTION 03: EOS LOBBY & COMMON UI              -->
+        <!-- ============================================== -->
+        <section class="pb-5">
+            <div class="container" style="max-width: 1120px;">
+                <div id="eos-lobbies" class="glass-panel">
+                    
+                    <!-- Section Header -->
+                    <div class="mb-4 pb-3 border-bottom border-secondary" style="border-color: rgba(255,255,255,0.1) !important;">
+                        <h2 class="fw-bolder hero-title mb-0">Building the Lobby System using EOS &amp; Common UI</h2>
+                    </div>
+
+                    <!-- Part 1: Figma UI/UX Design & Architecture (FIRST) -->
+                    <div class="mb-5">
+                        <div class="d-flex flex-wrap justify-content-between align-items-baseline mb-2">
+                            <div class="mb-3">
+                                <h3 class="fw-bolder hero-title display-6 mb-0" style="font-size: 1.5rem; letter-spacing: -0.02em;">
+                                    UI/UX Wireframes
+                                </h3>
+                                <div style="width: 48px; height: 3px; background: #ffc107; border-radius: 2px;" class="mt-2 mb-0"></div>
+                            </div>
+                            <span class="text-secondary small">Interactive Figma &bull; Pan and zoom to inspect</span>
+                        </div>
+
+                        <p class="hero-text mb-4" style="font-size: 1rem; line-height: 1.6;">
+                            Before writing any widget logic in Unreal, I designed and prototyped the full lobby loop in Figma.
+                        </p>
+
+                        <!-- Figma Embed Frame -->
+                        <div class="blueprint-frame overflow-hidden" style="height: 520px;">
+                            <iframe 
+                                style="border: 1px solid rgba(0, 0, 0, 0.1);" 
+                                width= 100%
+                                height= 100%
+                                src="https://embed.figma.com/design/Kw3vEUaWEAttXLONYv8i74/Mythbound-UI-UX?node-id=0-1&embed-host=share" 
+                                allowfullscreen>
+
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <!-- Part 2: Lobby Creation & Match Setup Video -->
+                    <div class="pt-4 mb-5 border-top" style="border-color: rgba(255,255,255,0.08) !important;">
+                        <div class="row g-4 g-lg-5 align-items-center">
+                            
+                            <!-- Left: Video (Compact col-lg-5) -->
+                            <div class="col-12 col-lg-5">
+                                <div class="hero-media ratio ratio-16x9">
+                                    <video autoplay loop muted playsinline preload="metadata" class="w-100 h-100 object-fit-cover">
+                                        <source src="content/create_lobby.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                            </div>
+
+                            <!-- Right: Narrative -->
+                            <div class="col-12 col-lg-7">
+                                <div class="mb-3">
+                                    <h3 class="fw-bolder hero-title display-6" style="font-size: 1.5rem; letter-spacing: -0.02em;">
+                                        Lobby Creation &amp; Match Setup
+                                    </h3>
+                                    <div style="width: 48px; height: 3px; background: #ffc107; border-radius: 2px;" class="mt-2 mb-3"></div>
+                                </div>
+
+                                <p class="hero-text mb-0" style="font-size: 1rem; line-height: 1.6;">
+                                    I architected our lobby infrastructure using <strong>Epic Online Services (EOS)</strong> for matchmaking, presence, and peer-to-peer session management, paired with Unreal's <strong>Common UI</strong> to handle multi-platform input routing and navigation stacks natively.
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Part 3: Character / Team Selection & Match Settings -->
+                    <div class="pt-4 mb-5 border-top" style="border-color: rgba(255,255,255,0.08) !important;">
+                        
+                        <div class="mb-4">
+                            <h3 class="fw-bolder hero-title display-6" style="font-size: 1.5rem; letter-spacing: -0.02em;">
+                                Character / Team Selection &amp; Match Settings
+                            </h3>
+                            <div style="width: 48px; height: 3px; background: #ffc107; border-radius: 2px;" class="mt-2 mb-3"></div>
+                            
+                            <p class="hero-text mb-0" style="font-size: 1rem; line-height: 1.6;">
+                                To prevent race conditions, duplicate hero picks, and uneven teams, all selections are validated server-side. Selections send reliable Server RPCs to verify availability, and the host replicates changes via <code>GameState</code> and <code>PlayerState</code>firing <code>OnRep</code> delegates to update Common UI across all connected screens in real time.
+                            </p>
+                        </div>
+
+                        <!-- 3-Column Video Row -->
+                        <div class="row g-3">
+                            <div class="col-12 col-md-4">
+                                <div class="hero-media ratio ratio-16x9">
+                                    <video autoplay loop muted playsinline preload="metadata" class="w-100 h-100 object-fit-cover">
+                                        <source src="content/team_select.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                                <span class="text-secondary d-block text-center mt-2" style="font-size: 0.85rem; font-weight: 500;">
+                                    Team Selection
+                                </span>
+                            </div>
+
+                            <div class="col-12 col-md-4">
+                                <div class="hero-media ratio ratio-16x9">
+                                    <video autoplay loop muted playsinline preload="metadata" class="w-100 h-100 object-fit-cover">
+                                        <source src="content/character_select.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                                <span class="text-secondary d-block text-center mt-2" style="font-size: 0.85rem; font-weight: 500;">
+                                    Character Selection
+                                </span>
+                            </div>
+
+                            <div class="col-12 col-md-4">
+                                <div class="hero-media ratio ratio-16x9">
+                                    <video autoplay loop muted playsinline preload="metadata" class="w-100 h-100 object-fit-cover">
+                                        <source src="content/mode_select.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                                <span class="text-secondary d-block text-center mt-2" style="font-size: 0.85rem; font-weight: 500;">
+                                    Match Settings &amp; Mode
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Part 4: Blueprints -->
+                    <div class="pt-4 border-top" style="border-color: rgba(255,255,255,0.08) !important;">
+                        
+                        <!-- Blueprint: Map & Mode Updation -->
+                        <div>
+                            <div class="d-flex flex-wrap justify-content-between align-items-baseline mb-2">
+                                <div class="mb-3">
+                                    <h3 class="fw-bolder hero-title display-6 mb-0" style="font-size: 1.5rem; letter-spacing: -0.02em;">
+                                        Map &amp; Game Mode Replication
+                                    </h3>
+                                    <div style="width: 48px; height: 3px; background: #ffc107; border-radius: 2px;" class="mt-2 mb-0"></div>
+                                </div>
+                                <span class="text-secondary small">Interactive Blueprint &bull; Click and drag to pan</span>
+                            </div>
+
+                            <p class="hero-text mb-3" style="font-size: 1rem; line-height: 1.6;">
+                                Manages host-side match mutations, serializing selected game rules and arena maps across EOS session attributes and multicasting changes to all lobby members.
+                            </p>
+
+                            <div class="blueprint-frame overflow-hidden">
+                                <iframe src="https://blueprintue.com/render/td92xs01/" width="100%" height="100%" scrolling="no" allowfullscreen frameborder="0"></iframe>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div> <!-- END SECTION 03 GLASS PANEL -->
+            </div>
+        </section>
+
+        <!-- ============================================== -->
+        <!-- SECTION 04: BUILD AUTOMATION USING JENKINS     -->
+        <!-- ============================================== -->
+        <section class="pb-5">
+            <div class="container" style="max-width: 1120px;">
+                <div id="jenkins-ci-cd" class="glass-panel">
+                    
+                    <!-- Section Header -->
+                    <div class="mb-4 pb-3 border-bottom border-secondary" style="border-color: rgba(255,255,255,0.1) !important;">
+                        <h2 class="fw-bolder hero-title mb-0">Build Automation using Jenkins</h2>
+                    </div>
+
+                    <!-- Pipeline Narrative & Dashboard Preview -->
+                    <div class="row g-4 g-lg-5 align-items-center mb-5">
+                        
+                        <!-- Left: Dashboard Screenshot -->
+                        <div class="col-12 col-lg-6">
+                            <div class="hero-media p-2 text-center" style="background: rgba(0,0,0,0.5);">
+                                <img src="content/jenkins.png" alt="Jenkins Multi-Job Dashboard" class="img-fluid rounded" style="max-height: 380px; width: 100%; object-fit: contain;">
+                            </div>
+                        </div>
+
+                        <!-- Right: Narrative -->
+                        <div class="col-12 col-lg-6">
+                            <div class="mb-3">
+                                <h3 class="fw-bolder hero-title display-6" style="font-size: 1.5rem; letter-spacing: -0.02em;">
+                                    Continuous Integration Pipeline
+                                </h3>
+                                <div style="width: 48px; height: 3px; background: #ffc107; border-radius: 2px;" class="mt-2 mb-3"></div>
+                            </div>
+
+                            <p class="hero-text mb-0" style="font-size: 1.05rem; line-height: 1.6;">
+                                To prevent corrupted Blueprints, broken C++ headers, and cook failures from stalling a multi-disciplinary team, I architected a fully automated CI/CD pipeline in Jenkins integrated with Perforce. This guaranteed build stability across active development and maintained ready-to-test packages every single morning.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="row g-4 mb-4">
+                        <div class="col-12 col-md-4">
+                            <h5 class="fw-bold hero-title mb-2">On-Commit Compile</h5>
+                            <p class="hero-text big mb-0">
+                                Triggered automatically on every Perforce commit to validate C++ code and Blueprint integrity before errors propagate.
+                            </p>
+                        </div>
+                        <div class="col-12 col-md-4 border-start-md" style="border-left: 1px solid rgba(255,255,255,0.08);">
+                            <h5 class="fw-bold hero-title mb-2">Nightly Development Build</h5>
+                            <p class="hero-text big mb-0">
+                                Runs an iterative cook and package at 2 AM on new changes, archiving fresh builds for morning team playtests.
+                            </p>
+                        </div>
+                        <div class="col-12 col-md-4 border-start-md" style="border-left: 1px solid rgba(255,255,255,0.08);">
+                            <h5 class="fw-bold hero-title mb-2">Shipping Builds</h5>
+                            <p class="hero-text big mb-0">
+                                On-demand release job compiling an optimized, stripped build for milestone deliverables and external testing.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Build Automation Command Block -->
+                    <div class="pt-4 border-top" style="border-color: rgba(255,255,255,0.08) !important;">
+                        <div class="mb-3">
+                            <h3 class="fw-bolder hero-title display-6" style="font-size: 1.5rem; letter-spacing: -0.02em;">
+                                Unreal AutomationTool (UAT) Pipeline Script
+                            </h3>
+                            <div style="width: 48px; height: 3px; background: #ffc107; border-radius: 2px;" class="mt-2 mb-3"></div>
+                        </div>
+                        <p class="hero-text mb-3" style="font-size: 1.1rem; line-height: 1.6;">
+                            Our nightly packaging stage leverages multi-threaded cooking (<code>-CookProcessCount=8</code>) and asset iteration flags to keep build times under 15 minutes:
+                        </p>
+
+<pre><code class="language-batch">:: Nightly Development Package &amp; Archive Execution
+"C:\Program Files\Epic Games\UE_5.7\Engine\Build\BatchFiles\RunUAT.bat" BuildCookRun ^
+  -rocket -compile -compileeditor -installed -nop4 ^
+  -project="%WORKSPACE%/MythboundUEProject/MythboundGASP/MythboundGASP.uproject" ^
+  -cook -iterate -CookProcessCount=8 ^
+  -stage -archive -archivedirectory="%WORKSPACE%/temp/Development/x64" ^
+  -package -clientconfig=Development -pak -prereqs -distribution -nodebuginfo ^
+  -targetplatform=Win64 -build -utf8output</code></pre>
+                    </div>
+
+                </div> <!-- END SECTION 04 GLASS PANEL -->
+            </div>
+        </section>
+
+
+        <!-- ============================================== -->
+        <!-- SECTION 05: TECHNICAL LEAD DUTIES              -->
+        <!-- ============================================== -->
+        <section class="pb-5">
+            <div class="container" style="max-width: 1120px;">
+                <div id="technical-leadership" class="glass-panel">
+                    
+                    <!-- Section Header -->
+                    <div class="mb-4 pb-3 border-bottom border-secondary" style="border-color: rgba(255,255,255,0.1) !important;">
+                        <h2 class="fw-bolder hero-title mb-0">Technical Lead Duties</h2>
+                    </div>
+
+                    
+
+                    <!-- Part 1: Perforce Stream Architecture & Merging -->
+                    <div class="row g-4 g-lg-5 align-items-center mb-5">
+                        
+                        <!-- Left: P4 Streams Visual -->
+                        <div class="col-12 col-lg-6">
+                            <div class="hero-media p-2 text-center" style="background: rgba(0,0,0,0.5);">
+                                <img src="content/p4_streams.png" alt="Perforce Streams Architecture" class="img-fluid rounded" style="max-height: 400px; width: 100%; object-fit: contain;">
+                            </div>
+                        </div>
+
+                        <!-- Right: Stream Strategy -->
+                        <div class="col-12 col-lg-6">
+                            <div class="mb-3">
+                                <h3 class="fw-bolder hero-title display-6" style="font-size: 1.5rem; letter-spacing: -0.02em;">
+                                    Version Control Architecture &amp; Merging
+                                </h3>
+                                <div style="width: 48px; height: 3px; background: #ffc107; border-radius: 2px;" class="mt-2 mb-3"></div>
+                            </div>
+
+                            <p class="hero-text mb-3" style="font-size: 1rem; line-height: 1.6;">
+                                To prevent merge conflicts between engineering and asset bloat from external teams, I architected a multi-tier Perforce stream topology and handled cross-stream integrations, resolving binary Blueprint conflicts and ensuring clean compilation.
+                                </li>
+                            </p>
+
+                            <ul class="list-unstyled hero-text small mb-0 d-flex flex-column gap-2" style="font-size: 0.95rem; line-height: 1.5;">
+                                <li>
+                                    <i class="fas fa-chevron-right text-warning me-2"></i><strong>Mainline:</strong> Production-ready, locked fed only by stable integrations.
+                                </li>
+                                <li>
+                                    <i class="fas fa-chevron-right text-warning me-2"></i><strong>Development Stream:</strong> Daily active engineering integration and feature validation.
+                                </li>
+                                <li>
+                                    <i class="fas fa-chevron-right text-warning me-2"></i><strong>Content Stream:</strong> Isolates massive artist source files (.psd, .fbx, Maya assets) from bloating programmer workspaces.
+                                </li>
+                                <li>
+                                    <i class="fas fa-chevron-right text-warning me-2"></i><strong>Outsourcing Stream:</strong> Sandboxes contractor deliverables, allowing technical vetting prior to mainline merging.
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <!-- Part 2: Task Management & Production Roadmapping -->
+                    <div class="pt-4 mb-5 border-top" style="border-color: rgba(255,255,255,0.08) !important;">
+                        <div class="row g-4 g-lg-5 align-items-center">
+                            
+                            <!-- Left: Narrative -->
+                            <div class="col-12 col-lg-6">
+                                <div class="mb-3">
+                                    <h3 class="fw-bolder hero-title display-6" style="font-size: 1.5rem; letter-spacing: -0.02em;">
+                                        Production Planning &amp; Agile Task Scoping
+                                    </h3>
+                                    <div style="width: 48px; height: 3px; background: #ffc107; border-radius: 2px;" class="mt-2 mb-3"></div>
+                                </div>
+
+                                <p class="hero-text mb-0" style="font-size: 1.15rem; line-height: 1.6;">
+                                    As Technical Lead, I led sprint planning, requirement negotiation, and technical validation across departments. I translated high-level design aspirations into actionable technical epics, balanced engineering bandwidth, conducted code reviews, and enforced strict definition-of-done criteria to hit external milestone deadlines.
+                                </p>
+                            </div>
+
+                            <!-- Right: Jira Board Screenshot -->
+                            <div class="col-12 col-lg-6">
+                                <div class="hero-media p-2 text-center" style="background: rgba(0,0,0,0.5);">
+                                    <img src="content/jiraboard.png" alt="Jira Sprint Board &amp; Task Scoping" class="img-fluid rounded" style="max-height: 380px; width: 100%; object-fit: contain;">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Part 3: Playtesting & Empirical Game Feel -->
+                    <div class="pt-4 border-top" style="border-color: rgba(255,255,255,0.08) !important;">
+                        <div class="row g-4 g-lg-5 align-items-center">
+                            
+                            <!-- Left: Vertical Video Container (col-lg-4 with 4:5 vertical ratio) -->
+                            <div class="col-12 col-md-5 col-lg-4">
+                                <div class="hero-media ratio" style="--bs-aspect-ratio: 125%; max-width: 340px; margin: 0 auto;">
+                                    <video autoplay loop muted playsinline preload="metadata" class="w-100 h-100 object-fit-cover">
+                                        <source src="content/playtesting.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                                <small class="text-secondary d-block text-center mt-2" style="font-size: 0.9rem;">
+                                    Early Platesting Session on LAN with about 50 players
+                                </small>
+                            </div>
+
+                            <!-- Right: Narrative -->
+                            <div class="col-12 col-md-7 col-lg-8">
+                                <div class="mb-3">
+                                    <h3 class="fw-bolder hero-title display-6" style="font-size: 1.5rem; letter-spacing: -0.02em;">
+                                        Playtesting &amp; Technical Iteration
+                                    </h3>
+                                    <div style="width: 48px; height: 3px; background: #ffc107; border-radius: 2px;" class="mt-2 mb-3"></div>
+                                </div>
+
+                                <p class="hero-text mb-3" style="font-size: 1.2rem; line-height: 1.6;">
+                                    I partipated in continuous team playtests on fresh builds to validate systems at both levels:
+                                </p>
+
+                                <ul class="list-unstyled hero-text small mb-0 d-flex flex-column gap-2" style="font-size: 0.95rem; line-height: 1.5;">
+                                    <li>
+                                        <i class="fas fa-chevron-right text-warning me-2"></i><strong>Macro (Game Flow):</strong> Evaluating arena rotations, traversal speed, and whether map chokepoints supported fluid movement.
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-chevron-right text-warning me-2"></i><strong>Micro (Combat &amp; Ability Balance):</strong> Tuning frame windows, hit reactions, and stamina costs during live PvP engagements.
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-chevron-right text-warning me-2"></i><strong>Scope Management:</strong> Using playtest data to make decisive tuning calls instead of letting feature creep derail delivery timelines.
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div> <!-- END SECTION 05 GLASS PANEL -->
+            </div>
+        </section>
+    </div> <!-- END #content -->
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container py-3" id="recent-posts"></div>
+        <div class="text-center pt-2">
+            
+            <span class="px-1">
+                <a href="https://github.com/soummy21" aria-label="github" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="2.7em" height="2.7em" viewBox="0 0 1792 1792">
+                        <path fill="var(--text-color)" d="M522 1352q-8 9-20-3-13-11-4-19 8-9 20 3 12 11 4 19zm-42-61q9 12 0 19-8 6-17-7t0-18q9-7 17 6zm-61-60q-5 7-13 2-10-5-7-12 3-5 13-2 10 5 7 12zm31 34q-6 7-16-3-9-11-2-16 6-6 16 3 9 11 2 16zm129 112q-4 12-19 6-17-4-13-15t19-7q16 5 13 16zm63 5q0 11-16 11-17 2-17-11 0-11 16-11 17-2 17 11zm58-10q2 10-14 14t-18-8 14-15q16-2 18 9zm964-956v960q0 119-84.5 203.5t-203.5 84.5h-224q-16 0-24.5-1t-19.5-5-16-14.5-5-27.5v-239q0-97-52-142 57-6 102.5-18t94-39 81-66.5 53-105 20.5-150.5q0-121-79-206 37-91-8-204-28-9-81 11t-92 44l-38 24q-93-26-192-26t-192 26q-16-11-42.5-27t-83.5-38.5-86-13.5q-44 113-7 204-79 85-79 206 0 85 20.5 150t52.5 105 80.5 67 94 39 102.5 18q-40 36-49 103-21 10-45 15t-57 5-65.5-21.5-55.5-62.5q-19-32-48.5-52t-49.5-24l-20-3q-21 0-29 4.5t-5 11.5 9 14 13 12l7 5q22 10 43.5 38t31.5 51l10 23q13 38 44 61.5t67 30 69.5 7 55.5-3.5l23-4q0 38 .5 103t.5 68q0 22-11 33.5t-22 13-33 1.5h-224q-119 0-203.5-84.5t-84.5-203.5v-960q0-119 84.5-203.5t203.5-84.5h960q119 0 203.5 84.5t84.5 203.5z" />
+                    </svg>
+                </a>
+            </span>
+            
+            <span class="px-1">
+                <a href="https://linkedin.com/in/soumthakur" aria-label="linkedin" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width='2.4em' height='2.4em' fill="#fff" aria-label="LinkedIn" viewBox="0 0 512 512">
+                        <rect width="512" height="512" fill="#0077b5" rx="15%" />
+                        <circle cx="142" cy="138" r="37" />
+                        <path stroke="#fff" stroke-width="66" d="M244 194v198M142 194v198" />
+                        <path d="M276 282c0-20 13-40 36-40 24 0 33 18 33 45v105h66V279c0-61-32-89-76-89-34 0-51 19-59 32" />
+                    </svg>
+                </a>
+            </span>
+            
+        </div>
+        <div class="container py-4">
+            <div class="row justify-content-center">
+                <div class="col-md-4 text-center">
+                    <div class="pb-2">
+                        <a href="/portfolio/" title="Soumya Thakur | Game Developer">
+                            <img alt="Footer logo" src="/portfolio/images/mainpage/portfolio_icon.jpg" height="40px" width="40px">
+                        </a>
+                    </div>
+                    &copy; 2026 All Rights Reserved
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Prism Syntax Highlighting Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
+    
+    <script src="/portfolio/js/scroll.js"></script>
+</body>
+</html>

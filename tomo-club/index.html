@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TomoClub | Soumya Thakur</title>
+    
+    <link rel="icon" href="/portfolio/images/mainpage/portfolio_icon.jpg" type="image/gif">
+    <!-- Prism Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/portfolio/css/font.css" media="all">
+    <link rel="stylesheet" href="/portfolio/bootstrap-5/css/bootstrap.min.css" media="all">
+    <link rel="stylesheet" href="/portfolio/css/header.css" media="all">
+    <link rel="stylesheet" href="/portfolio/css/footer.css" media="all">
+    <link rel="stylesheet" href="/portfolio/css/custom.css" media="all">
+    <link rel="stylesheet" href="/portfolio/css/theme.css" media="all">
+    
+    <script defer src="/portfolio/fontawesome-5/all-5.15.4.js"></script>
+
+    <style>
+        .hero-title {
+            color: var(--text-color) !important;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+        }
+        .hero-text {
+            color: var(--text-secondary-color);
+        }
+        .line-sep {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Bigger Tools Icons */
+        .tool-icon, .tool-icon-reverse {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+            transition: transform 0.2s ease, filter 0.2s ease;
+        }
+        .tool-icon-reverse {
+            filter: invert(1);
+        }
+        .tool-icon:hover, .tool-icon-reverse:hover {
+            transform: translateY(-3px) scale(1.08);
+        }
+        
+        .platform-badge {
+            font-size: 1.35rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        /* Massive Role Header */
+        .role-headline {
+            font-size: 1.6rem;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            color: #ffc107;
+            line-height: 1.1;
+            text-transform: uppercase;
+        }
+
+        /* New style for the underlined header */
+        .section-header-underline {
+            font-size: 1.75rem; /* Bigger font size */
+            border-bottom: 2px solid #ffc107; /* The underline */
+            padding-bottom: 0.25rem;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Clean list links - NO BORDERS */
+        .contrib-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.8rem 0; /* Vertical breathing room, no side padding */
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.85) !important;
+            text-decoration: none;
+            font-size: 1.05rem;
+            transition: all 0.25s ease;
+        }
+        .contrib-link:hover {
+            color: #ffc107 !important;
+            transform: translateX(8px);
+        }
+        
+        /* Updated for the link icon */
+        .contrib-icon {
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 0.95rem;
+            transition: transform 0.25s ease, color 0.25s ease;
+        }
+        .contrib-link:hover .contrib-icon {
+            color: #ffc107;
+        }
+
+        /* Make the video pop off the background */
+        .hero-media {
+            width: 100%;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            background-color: #000;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+        }
+        
+        /* FROSTED GLASS CONTAINER FOR CONTENT */
+        .glass-panel {
+            position: relative;
+            z-index: 1;
+            background: rgba(18, 19, 23, 0.85); /* Dark translucent background */
+            backdrop-filter: blur(12px); /* Blurs the game art ONLY directly behind the text/video */
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 1rem;
+            padding: 2.5rem;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+
+        /* --- BULLETPROOF FIXED BACKGROUND --- */
+        body {
+            background-color: #101114 !important;
+        }
+
+        #content {
+            position: relative;
+            z-index: 1;
+        }
+
+        #content::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            /* Swapped to a TomoClub specific background */
+            background: url('/portfolio/images/projects/tomoclub_bg.png') no-repeat center center;
+            background-size: cover;
+            opacity: 0.35;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        footer {
+            background-color: #101114 !important;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Section & Blueprint container styling */
+        .blueprint-frame {
+            width: 100%;
+            height: 480px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 0.5rem;
+            background: #0d0e12;
+        }
+
+        pre[class*="language-"] {
+            background: rgba(0, 0, 0, 0.65) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 0.5rem;
+            font-size: 0.88rem;
+            margin: 0;
+        }
+    </style>
+
+    <style>
+        /* Horizontal Strip Vault Styles */
+        .vault-strip {
+            background: var(--secondary-background-color);
+            border: 1px solid rgba(128,128,128,0.15);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+        .vault-strip:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            border-color: rgba(128,128,128,0.35);
+        }
+        .vault-title { 
+            color: var(--text-color) !important; 
+        }
+        .vault-text { color: var(--text-secondary-color); }
+        
+        .platform-icon {
+            color: var(--text-secondary-color);
+            opacity: 0.7;
+            font-size: 1.1rem;
+        }
+        
+        /* Fixed media container for horizontal layout */
+        .strip-media-container {
+            width: 100%;
+            height: 100%;
+            min-height: 210px;
+            background-color: #000;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body class="light" onload="loading()">
+    
+    <script src="/portfolio/bootstrap-5/js/bootstrap.bundle.js"></script>
+    <script>
+        if (localStorage.getItem("pref-theme") === "dark") {
+            document.body.classList.add('dark');
+        } else if (localStorage.getItem("pref-theme") === "light") {
+            document.body.classList.remove('dark');
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.classList.add('dark');
+        }
+    </script>
+
+    <!-- Navigation -->
+    <header>
+        <nav class="pt-3 navbar navbar-expand-lg">
+            <div class="container-fluid mx-xs-2 mx-sm-5 mx-md-5 mx-lg-5">
+                <a class="navbar-brand primary-font text-wrap" href="/portfolio">
+                    <img src="/portfolio/images/mainpage/portfolio_icon.jpg" width="30" height="30" class="d-inline-block align-top">
+                    Soumya Thakur
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars hero-title"></i>
+                </button>
+                <div class="collapse navbar-collapse text-wrap primary-font" id="navbarContent">
+                    <ul class="navbar-nav ms-auto text-center">                                     
+                        <li class="nav-item navbar-text"><a class="nav-link" href="/portfolio/#projects">Featured</a></li>
+                        <li class="nav-item navbar-text"><a class="nav-link" href="/portfolio/project-vault/">Project Vault</a></li>
+                        <li class="nav-item navbar-text"><a class="nav-link" href="/portfolio/#about">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- CONTENT-->
+    <div id="content">
+        
+        <!-- HERO SECTION -->
+        <section class="py-5 pt-4">
+            <div class="container" style="max-width: 1120px;">
+                <div class="glass-panel">
+                    
+                    <!-- TOP HEADER: Split left/right -->
+                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
+                        <h1 class="fw-bolder display-4 hero-title mb-0">TomoClub</h1>
+                        
+                        <div class="d-flex align-items-center gap-3 mt-2 mt-md-0">
+                            <!-- Update date accordingly -->
+                            <span class="fs-6 fw-bold text-warning" style="letter-spacing: 0.05em;"> JULY 2022 - JUNE 2025</span>
+                            <span class="text-secondary opacity-50">|</span>
+                            <div class="platform-badge">
+                                <!-- Using placeholder names for platform icons, ensure these exist in your repo -->
+                                <img src="/portfolio/images/icons/webgl.png" alt="Web" title="Web/Browser" class="tool-icon" style="width: 40px; height: 40px;">
+                                <img src="/portfolio/images/icons/app-store.png" alt="iOS" title="iOS" class="tool-icon" style="width: 24px; height: 24px;">
+                                <img src="/portfolio/images/icons/android.png" alt="Android" title="Android" class="tool-icon" style="width: 24px; height: 24px;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TOOLS USED -->
+                    <div class="d-flex flex-wrap align-items-center gap-3 mb-4">
+                        <span class="text-uppercase fw-bold text-secondary big" style="letter-spacing: 0.08em;">Tools Used</span>
+                        <div class="d-flex flex-wrap align-items-center gap-2">
+                            <!-- Using actual img tags just like index_2.html -->
+                            <img src="/portfolio/images/icons/unity-dark.png" alt="Unity" title="Unity" class="tool-icon">
+                            <img src="/portfolio/images/icons/c-sharp.png" alt="C#" title="C#" class="tool-icon">
+                            <img src="/portfolio/images/icons/visual-studio.png" alt="Visual Studio" title="Visual Studio" class="tool-icon">
+                            <img src="/portfolio/images/icons/git.png" alt="Git" title="Git" class="tool-icon">
+                            <img src="/portfolio/images/icons/clickup.png" alt="Clickup" title="Clickup" class="tool-icon">
+                            <img src="/portfolio/images/icons/firebase.png" alt="Firebase" title="Firebase" class="tool-icon">
+                            <img src="/portfolio/images/icons/Xcode.png" alt="Xcode" title="Xcode" class="tool-icon">
+                            <img src="/portfolio/images/icons/figma.png" alt="Figma" title="Figma" class="tool-icon">
+                            <img src="/portfolio/images/icons/Photon Engine.png" alt="Photon Engine" title="Photon Engine" class="tool-icon" style="width: 40px; height: 40px;">
+                        </div>
+                    </div>
+
+                    <div class="line-sep mb-4"></div>
+                    <!-- HERO MAIN: MEDIA + ROLE -->
+                    <div class="row g-4 g-lg-5 align-items-start">
+                        
+                        <!-- Left: Vertical Personal Hero Image -->
+                        <div class="col-12 col-md-5 col-lg-4">
+                            <div class="hero-media ratio" style="--bs-aspect-ratio: 125%; max-width: 360px; margin: 0 auto;">
+                                <img src="content/funny.jpg" alt="Soumya Thakur at TomoClub" class="w-100 h-100 object-fit-cover" style="background: #1a1c23; object-position: center 30%;">
+                            </div>
+                        </div>
+
+                        <!-- Right: Massive Role & Contributions -->
+                        <div class="col-12 col-md-7 col-lg-8">
+                            <div class="text-start mt-2">
+                                
+                                <!-- Stacked Role (Clean, No divider line) -->
+                                <div class="mb-3">
+                                    <span class="text-uppercase text-secondary fw-bold" style="letter-spacing: 0.1em; font-size: 0.8rem;">Contributions as:</span>
+                                    <div class="role-headline mt-1">Founding Engineer</div>
+                                </div>
+                                
+                                <!-- Clickable Section Jump Links -->
+                                <div class="d-flex flex-column gap-1">
+                                    <a href="#classroom-design" class="contrib-link">
+                                        <span><u>Designing for Kids &amp; the Classroom</u></span>
+                                        <i class="fas fa-external-link-alt contrib-icon" style="font-size: 0.85rem;"></i>
+                                    </a>
+                                    <a href="#gdk-architecture" class="contrib-link">
+                                        <span><u>Running Multiple Networked Simulations In Parallel</u></span>
+                                        <i class="fas fa-external-link-alt contrib-icon" style="font-size: 0.85rem;"></i>
+                                    </a>
+                                    <a href="#project-vault" class="contrib-link">
+                                        <span><u>Working on 6+ Web Educational Multiplayer Titles</u></span>
+                                        <i class="fas fa-external-link-alt contrib-icon" style="font-size: 0.85rem;"></i>
+                                    </a>
+                                    <a href="#team-leadership" class="contrib-link">
+                                        <span><u>Technical Management: In-House &amp; Contractors</u></span>
+                                        <i class="fas fa-external-link-alt contrib-icon" style="font-size: 0.85rem;"></i>
+                                    </a>
+                                </div>
+
+                                <!-- External Buttons At The Bottom -->
+                                <div class="d-flex flex-wrap gap-3 mt-4 pt-1">
+                                    <a href="https://tomoclub.org" target="_blank" class="btn btn-outline-warning d-inline-flex align-items-center px-3 py-2" style="border-radius: 0.5rem; background: rgba(255, 193, 7, 0.05); border-color: rgba(255, 193, 7, 0.35); color: #ffc107; font-size: 0.95rem; font-weight: 500; text-decoration: none; transition: all 0.2s ease;">
+                                        <i class="fas fa-globe me-2"></i> Visit Website
+                                        <i class="fas fa-arrow-up-right-from-square ms-2 opacity-50" style="font-size: 0.75rem;"></i>
+                                    </a>
+                                    
+                                    <a href="https://tomoclub.itch.io" target="_blank" class="btn btn-outline-light d-inline-flex align-items-center px-3 py-2" style="border-radius: 0.5rem; background: rgba(255, 255, 255, 0.04); border-color: rgba(255, 255, 255, 0.15); color: rgba(255, 255, 255, 0.85); font-size: 0.95rem; font-weight: 500; text-decoration: none; transition: all 0.2s ease;">
+                                        <i class="fab fa-itch-io me-2 text-danger"></i> Itch.io Showcase
+                                        <i class="fas fa-arrow-up-right-from-square ms-2 opacity-50" style="font-size: 0.75rem;"></i>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- END HERO GLASS PANEL -->
+            </div>
+        </section>
+
+        <!-- ============================================== -->
+        <!-- SECTION 01: DESIGNING FOR KIDS & THE CLASSROOM -->
+        <!-- ============================================== -->
+        <section class="pb-5">
+            <div class="container" style="max-width: 1120px;">
+                <div id="classroom-design" class="glass-panel">
+                    
+                    <!-- Section Header -->
+                    <div class="mb-4 pb-3 border-bottom border-secondary" style="border-color: rgba(255,255,255,0.1) !important;">
+                        <h2 class="fw-bolder hero-title mb-0">Designing for Kids &amp; the Classroom</h2>
+                    </div>
+
+                    <!-- Part 1: Product Entry Flow (Student vs Teacher) -->
+                    <div class="mb-5">
+                        
+                        <!-- Top: Full-Width Narrative -->
+                        <div class="mb-4">
+                            <h3 class="fw-bolder hero-title display-6" style="font-size: 1.5rem; letter-spacing: -0.02em;">
+                                Frictionless Onboarding Flow
+                            </h3>
+                            <div style="width: 48px; height: 3px; background: #ffc107; border-radius: 2px;" class="mt-2 mb-3"></div>
+
+                            <p class="hero-text mb-2" style="font-size: 1rem; line-height: 1.6;">
+                                Educational games fail if teachers spend half the period acting as IT support. Traditional account logins create severe friction and run into child data privacy constraints (COPPA/FERPA).
+                            </p>
+                            <p class="hero-text mb-0" style="font-size: 1rem; line-height: 1.6;">
+                                I designed an asymmetric entry model: educators configure custom match parameters and generate a single session ID, while students join instantly using ephemeral room codes and display names—requiring zero credentials or setup time.
+                            </p>
+                        </div>
+
+                        <!-- Bottom: Full-Width Side-by-Side Images -->
+                        <div class="row g-4">
+                            <!-- Student View -->
+                            <div class="col-12 col-md-6">
+                                <div class="hero-media p-2 text-center" style="background: rgba(0,0,0,0.5);">
+                                    <img src="content/student_mainpage.png" alt="Student Join Screen" class="img-fluid rounded w-100" style="object-fit: contain;">
+                                </div>
+                                <span class="text-secondary d-block text-center mt-2" style="font-size: 0.85rem; font-weight: 500;">
+                                    Student View (Instant Room Code Entry)
+                                </span>
+                            </div>
+
+                            <!-- Teacher View -->
+                            <div class="col-12 col-md-6">
+                                <div class="hero-media p-2 text-center" style="background: rgba(0,0,0,0.5);">
+                                    <img src="content/teacher_mainpage.png" alt="Teacher Creation Screen" class="img-fluid rounded w-100" style="object-fit: contain;">
+                                </div>
+                                <span class="text-secondary d-block text-center mt-2" style="font-size: 0.85rem; font-weight: 500;">
+                                    Teacher View (Session &amp; Pod Configuration)
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Part 2: Parallel Match Pods & Lobby Orchestration -->
+                    <div class="pt-4 mb-5 border-top" style="border-color: rgba(255,255,255,0.08) !important;">
+                        <div class="row g-4 g-lg-5 align-items-center">
+                            
+                            <!-- Left: Lobby Grouping Graphic -->
+                            <div class="col-12 col-lg-6">
+                                <div class="hero-media p-2 text-center" style="background: rgba(0,0,0,0.5);">
+                                    <img src="content/teacher_lobby.png" alt="Parallel Classroom Pod Allocation" class="img-fluid rounded" style="max-height: 340px; width: 100%; object-fit: contain;">
+                                </div>
+                                <small class="text-secondary d-block text-center mt-2" style="font-size: 0.85rem;">
+                                    Educator Lobby: Partitioning 30+ students into concurrent 4–6 player groups.
+                                </small>
+                            </div>
+
+                            <!-- Right: Narrative -->
+                            <div class="col-12 col-lg-6">
+                                <div class="mb-3">
+                                    <h3 class="fw-bolder hero-title display-6" style="font-size: 1.5rem; letter-spacing: -0.02em;">
+                                        Parallel Game Groups
+                                    </h3>
+                                    <div style="width: 48px; height: 3px; background: #ffc107; border-radius: 2px;" class="mt-2 mb-3"></div>
+                                </div>
+
+                                <ul class="list-unstyled hero-text small mb-0 d-flex flex-column gap-2" style="font-size: 1rem; line-height: 1.5;">
+                                    <li>
+                                        <i class="fas fa-chevron-right text-warning me-2"></i><strong>Unified Session ID:</strong> The entire class connects via a single code, eliminating messy link distribution.
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-chevron-right text-warning me-2"></i><strong>Dynamic Groups:</strong> The room automatically distributes incoming students into balanced 2-4 player groups.
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-chevron-right text-warning me-2"></i><strong>Live Rebalancing:</strong> Teachers can swap students between groups, reassign slots, or adjust group sizes before launching all games simultaneously.
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Part 3: Live In-Game Moderation & Spectator Tools -->
+                    <div class="pt-4 border-top" style="border-color: rgba(255,255,255,0.08) !important;">
+                        <div class="row g-4 g-lg-5 align-items-center">
+                            
+                            <!-- Left: Video (GDK_Teacher_Mod.mp4) -->
+                            <div class="col-12 col-lg-6">
+                                <div class="hero-media ratio ratio-16x9">
+                                    <video autoplay loop muted playsinline preload="metadata" class="w-100 h-100 object-fit-cover">
+                                        <source src="content/Teacher_Mod.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                                <small class="text-secondary d-block text-center mt-2" style="font-size: 0.85rem;">
+                                    Live Teacher Moderation: Real-time game control such as pause, play, restart and group oversight.
+                                </small>
+                            </div>
+
+                            <!-- Right: Narrative -->
+                            <div class="col-12 col-lg-6">
+                                <div class="mb-3">
+                                    <h3 class="fw-bolder hero-title display-6" style="font-size: 1.5rem; letter-spacing: -0.02em;">
+                                        Educator Moderation &amp; Spectator Controls
+                                    </h3>
+                                    <div style="width: 48px; height: 3px; background: #ffc107; border-radius: 2px;" class="mt-2 mb-3"></div>
+                                </div>
+
+                                <ul class="list-unstyled hero-text small mb-0 d-flex flex-column gap-2" style="font-size: 1rem; line-height: 1.5;">
+                                    <li>
+                                        <i class="fas fa-chevron-right text-warning me-2"></i><strong>Multi-Instance Spectating:</strong> A central observer view providing real-time visibility across all active match groups from a single dashboard.
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-chevron-right text-warning me-2"></i><strong>Global Controls:</strong> Instant room-wide pause controls that freeze all active simulations when the educator needs to deliver classroom instruction.
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-chevron-right text-warning me-2"></i><strong>Individual Group Controls:</strong> Granular controls to force-advance stalled student turns and resolve deadlocks without interrupting other groups.
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div> <!-- END SECTION 01 GLASS PANEL -->
+            </div>
+        </section>
+
+        <!-- ============================================== -->
+        <!-- SECTION 02: GDK & SYSTEMS ARCHITECTURE         -->
+        <!-- ============================================== -->
+        <section class="pb-5">
+            <div class="container" style="max-width: 1120px;">
+                <div id="gdk-architecture" class="glass-panel">
+                    
+                    <!-- Section Header -->
+                    <div class="mb-4 pb-3 border-bottom border-secondary" style="border-color: rgba(255,255,255,0.1) !important;">
+                        <h2 class="fw-bolder hero-title mb-0">Running Multiple Networked Simulations In Parallel</h2>
+                    </div>
+
+                    <!-- Part 1: Architecture Diagram & Narrative -->
+                    <div class="row g-4 g-lg-5 align-items-center mb-5">
+                        
+                        <!-- Left: Narrative -->
+                        <div class="col-12 col-lg-5">
+                            <div class="mb-3">
+                                <h3 class="fw-bolder hero-title display-6" style="font-size: 1.5rem; letter-spacing: -0.02em;">
+                                    Architecture Breakdown
+                                </h3>
+                                <div style="width: 48px; height: 3px; background: #ffc107; border-radius: 2px;" class="mt-2 mb-3"></div>
+                            </div>
+
+                            <p class="hero-text mb-3" style="font-size: 1.1rem; line-height: 1.6;">
+                                To run up to 8 independent match instances (scaling to 32 simultaneous students) within a single Unity scene without packet pollution or gameplay overlap, I architected a hierarchical <strong>GroupManager &rarr; Group &rarr; Game</strong> structure.
+                            </p>
+                            <p class="hero-text mb-0" style="font-size: 1.1rem; line-height: 1.6;">
+                                This topology completely isolates gameplay from networking. The Game Instance only resolves local logic, while the Group packages that logic and passes it to the GroupManager to be routed across the network.
+                            </p>
+                        </div>
+
+                        <!-- Right: Excalidraw UML Diagram -->
+                        <div class="col-12 col-lg-7">
+                            <div class="hero-media p-2 text-center" style="background: rgba(0,0,0,0.5);">
+                                <img src="content/group_manager_diagram.png" alt="Group Manager Network Abstraction Architecture Diagram" class="img-fluid rounded w-100" style="object-fit: contain;">
+                            </div>
+                            <span class="text-secondary d-block text-center mt-2" style="font-size: 0.85rem; font-weight: 500;">
+                                Decoupled Architecture: Interfacing away the network layer from core gameplay
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Part 2: Technical Deep-Dive Grid -->
+                    <div class="row g-4 mb-5 pb-5 border-bottom" style="border-color: rgba(255,255,255,0.08) !important;">
+                        <div class="col-12 col-md-4">
+                            <h6 class="fw-bold hero-title mb-2 text-warning">Network-Agnostic </h6>
+                            <p class="hero-text small mb-0" style="line-height: 1.6;">
+                                The GroupManager interfaces with an abstracted network layer. While currently implemented with PUN 2, this decoupled architecture allows the backend to be hot-swapped to Fusion or Netcode without rewriting core gameplay logic.
+                            </p>
+                        </div>
+                        <div class="col-12 col-md-4 border-start-md" style="border-left: 1px solid rgba(255,255,255,0.08);">
+                            <h6 class="fw-bold hero-title mb-2 text-warning">Encapsulated Group State</h6>
+                            <p class="hero-text small mb-0" style="line-height: 1.6;">
+                                Each group manages its own turn timer, lifecycle state (Active, Paused, Disconnected), and player membership. If one pod stalls or pauses, neighboring pods continue simulation uninterrupted.
+                            </p>
+                        </div>
+                        <div class="col-12 col-md-4 border-start-md" style="border-left: 1px solid rgba(255,255,255,0.08);">
+                            <h6 class="fw-bold hero-title mb-2 text-warning">Spatial &amp; Camera Isolation</h6>
+                            <p class="hero-text small mb-0" style="line-height: 1.6;">
+                                Each pod is partitioned into segregated scene coordinates and visual culling. Both student cameras and the teacher’s bird’s-eye spectator cameras track only their assigned pod's entities.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Part 3: Live Viewport Separation (Dual Videos) -->
+                    <div class="mb-2">
+                        
+                        <!-- Header -->
+                        <div class="mb-4">
+                            <h3 class="fw-bolder hero-title display-6" style="font-size: 1.5rem; letter-spacing: -0.02em;">
+                                Live Viewport Separation: Student vs. Educator
+                            </h3>
+                            <div style="width: 48px; height: 3px; background: #ffc107; border-radius: 2px;" class="mt-2 mb-3"></div>
+                            
+                            <p class="hero-text mb-0" style="font-size: 1rem; line-height: 1.6;">
+                                The student’s localized view renders only their immediate view or group view depending on the game type, while the educator’s spectator view renders a full-map overlay composed of telemetry from every active group.
+                            </p>
+                        </div>
+
+                        <!-- Video Row -->
+                        <div class="row g-3">
+                            
+                            <!-- Video 1: Student Focused View -->
+                            <div class="col-12 col-md-6">
+                                <div class="hero-media ratio ratio-16x9">
+                                    <video autoplay loop muted playsinline preload="metadata" class="w-100 h-100 object-fit-cover">
+                                        <source src="content/Student_Play.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                                <span class="text-secondary d-block text-center mt-2" style="font-size: 0.85rem; font-weight: 500;">
+                                    Student Client: Localized camera tracking and gameplay
+                                </span>
+                            </div>
+
+                            <!-- Video 2: Teacher Spectator View -->
+                            <div class="col-12 col-md-6">
+                                <div class="hero-media ratio ratio-16x9">
+                                    <video autoplay loop muted playsinline preload="metadata" class="w-100 h-100 object-fit-cover">
+                                        <source src="content/Teacher_Spec.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                                <span class="text-secondary d-block text-center mt-2" style="font-size: 0.85rem; font-weight: 500;">
+                                    Educator Client: Full-map spectator camera
+                                </span>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                </div> <!-- END SECTION 02 GLASS PANEL -->
+            </div>
+        </section>
+
+        <!-- ============================================== -->
+        <!-- SECTION 03: 6+ MULTIPLAYER TITLES              -->
+        <!-- ============================================== -->
+        <section class="pb-5">
+            <div class="container" style="max-width: 1120px;">
+                <div id="project-vault" class="glass-panel">
+                    
+                    <!-- Section Header -->
+                    <div class="mb-4 pb-3 border-bottom border-secondary" style="border-color: rgba(255,255,255,0.1) !important;">
+                        <h2 class="fw-bolder hero-title mb-0">Working on 6+ Web Educational Multiplayer Titles</h2>
+                    </div>
+
+                    <div class="mb-5">
+                        <p class="hero-text mb-0" style="font-size: 1.05rem; line-height: 1.6;">
+                            While the centralized GDK provided the architectural foundation, the core engineering challenge was building distinct, engaging mechanics for each individual project. I served as a Game Programmer and Designer across more than 6 web-based multiplayer games. Below are 4 flagship titles where I drove the gameplay development, spanning from networked isometric stealth to turn-based hexagonal strategy.
+                        </p>
+                    </div>
+
+                    <!-- HORIZONTAL STRIPS CONTAINER -->
+                    <div class="d-flex flex-column gap-4">
+                        
+                        <!-- ============================================== -->
+                        <!-- STRIP 1: THE CRISIS CREW                       -->
+                        <!-- ============================================== -->
+                        <div class="row g-0 p-3 p-md-4 rounded-4 vault-strip align-items-center" style="background: rgba(255,255,255,0.02);">
+                            
+                            <!-- Left: Media -->
+                            <div class="col-12 col-lg-5 mb-3 mb-lg-0 pe-lg-4">
+                                <div class="strip-media-container ratio ratio-16x9">
+                                    <iframe src="https://player.vimeo.com/video/1044731462?autoplay=1&muted=1&loop=1&background=1&title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                                </div>
+                            </div>
+
+                            <!-- Right: Content -->
+                            <div class="col-12 col-lg-7 text-start d-flex flex-column justify-content-center ps-lg-2">
+                                
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <h4 class="fw-bolder vault-title mb-0" style="letter-spacing: -0.02em;">The Crisis Crew</h4>
+                                    <div class="d-flex gap-2">
+                                        <img src="/portfolio/images/icons/chrome.png" alt="Chrome" width="30" height="30">
+                                    </div>
+                                </div>
+
+                                <div class="d-flex align-items-center gap-3 mb-2">
+                                    <div class="text-warning fw-bold" style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em;">
+                                        Game Programmer | Game Designer
+                                    </div>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <img src="/portfolio/images/icons/unity-dark.png" alt="Unity" width="20" height="20">
+                                        <img src="/portfolio/images/icons/c-sharp.png" alt="C#" width="20" height="20">
+                                        <img src="/portfolio/images/icons/Photon Engine.png" alt="Photon Engine" width="30" height="30">
+                                    </div>
+                                </div>
+
+                                <p class="mb-3 vault-text" style="font-size: 0.95rem; line-height: 1.5;">
+                                    Explore a top-secret facility filled with puzzles. Architected a scalable system leveraging Observer, Component, and State design patterns, and developed the entire codebase including networked player movement and puzzle interactions.
+                                </p>
+
+                                <div>
+                                    <a href="https://tomoclub.itch.io/the-crisis-crew" target="_blank" class="btn btn-sm px-3 py-1 fw-bold d-inline-flex align-items-center gap-2" style="background: rgba(255, 193, 7, 0.1); color: #ffc107; border: 1px solid rgba(255, 193, 7, 0.3);">
+                                        <i class="fas fa-gamepad"></i> View on Itch.io
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ============================================== -->
+                        <!-- STRIP 2: SECRET SANTA                          -->
+                        <!-- ============================================== -->
+                        <div class="row g-0 p-3 p-md-4 rounded-4 vault-strip align-items-center" style="background: rgba(255,255,255,0.02);">
+                            
+                            <div class="col-12 col-lg-5 mb-3 mb-lg-0 pe-lg-4">
+                                <div class="strip-media-container ratio ratio-16x9">
+                                    <iframe src="https://player.vimeo.com/video/1044118611?autoplay=1&muted=1&loop=1&background=1&title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-lg-7 text-start d-flex flex-column justify-content-center ps-lg-2">
+                                
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <h4 class="fw-bolder vault-title mb-0" style="letter-spacing: -0.02em;">Secret Santa</h4>
+                                    <div class="d-flex gap-2">
+                                        <img src="/portfolio/images/icons/chrome.png" alt="Chrome" width="30" height="30">
+                                    </div>
+                                </div>
+
+                                <div class="d-flex align-items-center gap-3 mb-2">
+                                    <div class="text-warning fw-bold" style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em;">
+                                        Game Programmer | Game Designer
+                                    </div>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <img src="/portfolio/images/icons/unity-dark.png" alt="Unity" width="20" height="20">
+                                        <img src="/portfolio/images/icons/c-sharp.png" alt="C#" width="20" height="20">
+                                        <img src="/portfolio/images/icons/Photon Engine.png" alt="Photon Engine" width="30" height="30">
+                                    </div>
+                                </div>
+
+                                <p class="mb-3 vault-text" style="font-size: 0.95rem; line-height: 1.5;">
+                                    A stealth-based holiday adventure. Engineered an intuitive isometric delivery system, dynamic maps, and AI-driven dog behaviors. Utilized Photon PUN 2 to synchronize isometric movement and cooperative player roles seamlessly across the network.
+                                </p>
+
+                                <div>
+                                    <a href="https://tomoclub.itch.io/secret-santa" target="_blank" class="btn btn-sm px-3 py-1 fw-bold d-inline-flex align-items-center gap-2" style="background: rgba(255, 193, 7, 0.1); color: #ffc107; border: 1px solid rgba(255, 193, 7, 0.3);">
+                                        <i class="fas fa-gamepad"></i> View on Itch.io
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ============================================== -->
+                        <!-- STRIP 3: COSMOS COLOUR CLASH                   -->
+                        <!-- ============================================== -->
+                        <div class="row g-0 p-3 p-md-4 rounded-4 vault-strip align-items-center" style="background: rgba(255,255,255,0.02);">
+                            
+                            <div class="col-12 col-lg-5 mb-3 mb-lg-0 pe-lg-4">
+                                <div class="strip-media-container ratio ratio-16x9">
+                                    <iframe src="https://player.vimeo.com/video/1044129805?autoplay=1&muted=1&loop=1&background=1&title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-lg-7 text-start d-flex flex-column justify-content-center ps-lg-2">
+                                
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <h4 class="fw-bolder vault-title mb-0" style="letter-spacing: -0.02em;">Cosmos Colour Clash</h4>
+                                    <div class="d-flex gap-2">
+                                        <img src="/portfolio/images/icons/chrome.png" alt="Chrome" width="30" height="30">
+                                    </div>
+                                </div>
+
+                                <div class="d-flex align-items-center gap-3 mb-2">
+                                    <div class="text-warning fw-bold" style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em;">
+                                        Game Programmer | Game Designer
+                                    </div>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <img src="/portfolio/images/icons/unity-dark.png" alt="Unity" width="20" height="20">
+                                        <img src="/portfolio/images/icons/c-sharp.png" alt="C#" width="20" height="20">
+                                        <img src="/portfolio/images/icons/Photon Engine.png" alt="Photon Engine" width="30" height="30">
+                                    </div>
+                                </div>
+
+                                <p class="mb-3 vault-text" style="font-size: 0.95rem; line-height: 1.5;">
+                                    A real-time multiplayer tile conquest game. Implemented high-frequency networked multiplayer functionality for real-time synchronization of tile painting and power-up usage. Oversaw full production, playtesting, and cross-functional team efforts.
+                                </p>
+
+                                <div>
+                                    <a href="https://tomoclub.itch.io/cosmos-colour-clash" target="_blank" class="btn btn-sm px-3 py-1 fw-bold d-inline-flex align-items-center gap-2" style="background: rgba(255, 193, 7, 0.1); color: #ffc107; border: 1px solid rgba(255, 193, 7, 0.3);">
+                                        <i class="fas fa-gamepad"></i> View on Itch.io
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ============================================== -->
+                        <!-- STRIP 4: THE FIRST SETTLERS                    -->
+                        <!-- ============================================== -->
+                        <div class="row g-0 p-3 p-md-4 rounded-4 vault-strip align-items-center" style="background: rgba(255,255,255,0.02);">
+                            
+                            <div class="col-12 col-lg-5 mb-3 mb-lg-0 pe-lg-4">
+                                <div class="strip-media-container ratio ratio-16x9">
+                                    <iframe src="https://player.vimeo.com/video/1044063332?autoplay=1&muted=1&loop=1&background=1&title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-lg-7 text-start d-flex flex-column justify-content-center ps-lg-2">
+                                
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <h4 class="fw-bolder vault-title mb-0" style="letter-spacing: -0.02em;">The First Settlers</h4>
+                                    <div class="d-flex gap-2">
+                                        <img src="/portfolio/images/icons/chrome.png" alt="Chrome" width="30" height="30">
+                                    </div>
+                                </div>
+
+                                <div class="d-flex align-items-center gap-3 mb-2">
+                                    <div class="text-warning fw-bold" style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em;">
+                                        Game Programmer | Game Desinger
+                                    </div>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <img src="/portfolio/images/icons/unity-dark.png" alt="Unity" width="20" height="20">
+                                        <img src="/portfolio/images/icons/c-sharp.png" alt="C#" width="20" height="20">
+                                        <img src="/portfolio/images/icons/Photon Engine.png" alt="Photon Engine" width="30" height="30">
+                                    </div>
+                                </div>
+
+                                <p class="mb-3 vault-text" style="font-size: 0.95rem; line-height: 1.5;">
+                                    A turn-based strategy game focusing on resource management. Designed hexagonal grid-based mechanics and pathfinding algorithms. Optimized turn-based state synchronization via Photon PUN 2 to maintain consistent game logic across the network.
+                                </p>
+
+                                <div>
+                                    <a href="https://tomoclub.itch.io/the-first-settlers" target="_blank" class="btn btn-sm px-3 py-1 fw-bold d-inline-flex align-items-center gap-2" style="background: rgba(255, 193, 7, 0.1); color: #ffc107; border: 1px solid rgba(255, 193, 7, 0.3);">
+                                        <i class="fas fa-globe"></i> View Project
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div> <!-- END SECTION 03 GLASS PANEL -->
+            </div>
+        </section>
+
+        <!-- ============================================== -->
+        <!-- SECTION 04: ENGINEERING LEADERSHIP & PIPELINE  -->
+        <!-- ============================================== -->
+        <section class="pb-5 mb-5">
+            <div class="container" style="max-width: 1120px;">
+                <div id="team-leadership" class="glass-panel">
+                    
+                    <!-- Section Header -->
+                    <div class="mb-4 pb-3 border-bottom border-secondary" style="border-color: rgba(255,255,255,0.1) !important;">
+                        <h2 class="fw-bolder hero-title mb-0">Technical Management: In-House &amp; Contractors</h2>
+                    </div>
+
+                    <!-- Narrative -->
+                    <div class="row g-4 g-lg-5 align-items-center mb-5">
+                        <div class="col-12 col-lg-7">
+                            <p class="hero-text mb-3" style="font-size: 1.05rem; line-height: 1.6;">
+                                Scaling a studio's output requires more than just solid code; it requires a robust pipeline. As the scope of our educational platform expanded, my role shifted from sole architect to leading the technical direction across more than 12 diverse educational game projects, including a high-profile UNESCO-backed initiative.
+                            </p>
+                        </div>
+                        
+                        <div class="col-12 col-lg-5">
+                            <div class="p-4 rounded h-100 text-center" style="background: rgba(255,193,7,0.05); border: 1px solid rgba(255,193,7,0.2);">
+                                <h3 class="fw-bolder text-warning display-4 mb-0">12+</h3>
+                                <p class="text-secondary fw-bold text-uppercase tracking-wide mb-3" style="font-size: 0.85rem; letter-spacing: 0.1em;">Shipped Titles Managed</p>
+                                <hr style="border-color: rgba(255,193,7,0.3); width: 50%; margin: 0 auto 1rem auto;">
+                                <div class="d-flex justify-content-center gap-3">
+                                    <span class="badge bg-dark border border-secondary text-light p-2">Sprint Planning</span>
+                                    <span class="badge bg-dark border border-secondary text-light p-2">Code Reviews</span>
+                                    <span class="badge bg-dark border border-secondary text-light p-2">Contractor Mgmt</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Core Leadership Pillars Grid -->
+                    <div class="row g-4 pt-2">
+                        
+                        <!-- Pillar 1 -->
+                        <div class="col-12 col-md-4">
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <div class="bg-warning text-dark rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                    <i class="fas fa-users-cog fs-5"></i>
+                                </div>
+                                <h5 class="fw-bold hero-title mb-0">Contractor Integration</h5>
+                            </div>
+                            <p class="hero-text small mb-0" style="line-height: 1.6;">
+                                Onboarded and directed external development teams. Maintained strict code review protocols to ensure contractor gameplay logic adhered to our GDK architecture.
+                            </p>
+                        </div>
+
+                        <!-- Pillar 2 -->
+                        <div class="col-12 col-md-4 border-start-md" style="border-left: 1px solid rgba(255,255,255,0.08);">
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <div class="bg-info text-dark rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                    <i class="fas fa-project-diagram fs-5"></i>
+                                </div>
+                                <h5 class="fw-bold hero-title mb-0">Cross-Functional Agile</h5>
+                            </div>
+                            <p class="hero-text small mb-0" style="line-height: 1.6;">
+                                Bridged the gap between game design, art production, and engineering. Translated educational curriculum requirements into technical specifications.
+                            </p>
+                        </div>
+
+                        <!-- Pillar 3 -->
+                        <div class="col-12 col-md-4 border-start-md" style="border-left: 1px solid rgba(255,255,255,0.08);">
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <div class="bg-success text-dark rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                    <i class="fas fa-globe fs-5"></i>
+                                </div>
+                                <h5 class="fw-bold hero-title mb-0">Global Initiatives</h5>
+                            </div>
+                            <p class="hero-text small mb-0" style="line-height: 1.6;">
+                                Spearheaded the technical delivery of high-stakes projects, including a flagship UNESCO initiative.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div> <!-- END SECTION 04 GLASS PANEL -->
+            </div>
+        </section>
+        
+    </div> <!-- END #content -->
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container py-3" id="recent-posts"></div>
+        <div class="text-center pt-2">
+            
+            <span class="px-1">
+                <a href="https://github.com/soummy21" aria-label="github" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="2.7em" height="2.7em" viewBox="0 0 1792 1792">
+                        <path fill="var(--text-color)" d="M522 1352q-8 9-20-3-13-11-4-19 8-9 20 3 12 11 4 19zm-42-61q9 12 0 19-8 6-17-7t0-18q9-7 17 6zm-61-60q-5 7-13 2-10-5-7-12 3-5 13-2 10 5 7 12zm31 34q-6 7-16-3-9-11-2-16 6-6 16 3 9 11 2 16zm129 112q-4 12-19 6-17-4-13-15t19-7q16 5 13 16zm63 5q0 11-16 11-17 2-17-11 0-11 16-11 17-2 17 11zm58-10q2 10-14 14t-18-8 14-15q16-2 18 9zm964-956v960q0 119-84.5 203.5t-203.5 84.5h-224q-16 0-24.5-1t-19.5-5-16-14.5-5-27.5v-239q0-97-52-142 57-6 102.5-18t94-39 81-66.5 53-105 20.5-150.5q0-121-79-206 37-91-8-204-28-9-81 11t-92 44l-38 24q-93-26-192-26t-192 26q-16-11-42.5-27t-83.5-38.5-86-13.5q-44 113-7 204-79 85-79 206 0 85 20.5 150t52.5 105 80.5 67 94 39 102.5 18q-40 36-49 103-21 10-45 15t-57 5-65.5-21.5-55.5-62.5q-19-32-48.5-52t-49.5-24l-20-3q-21 0-29 4.5t-5 11.5 9 14 13 12l7 5q22 10 43.5 38t31.5 51l10 23q13 38 44 61.5t67 30 69.5 7 55.5-3.5l23-4q0 38 .5 103t.5 68q0 22-11 33.5t-22 13-33 1.5h-224q-119 0-203.5-84.5t-84.5-203.5v-960q0-119 84.5-203.5t203.5-84.5h960q119 0 203.5 84.5t84.5 203.5z" />
+                    </svg>
+                </a>
+            </span>
+            
+            <span class="px-1">
+                <a href="https://linkedin.com/in/soumthakur" aria-label="linkedin" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width='2.4em' height='2.4em' fill="#fff" aria-label="LinkedIn" viewBox="0 0 512 512">
+                        <rect width="512" height="512" fill="#0077b5" rx="15%" />
+                        <circle cx="142" cy="138" r="37" />
+                        <path stroke="#fff" stroke-width="66" d="M244 194v198M142 194v198" />
+                        <path d="M276 282c0-20 13-40 36-40 24 0 33 18 33 45v105h66V279c0-61-32-89-76-89-34 0-51 19-59 32" />
+                    </svg>
+                </a>
+            </span>
+            
+        </div>
+        <div class="container py-4">
+            <div class="row justify-content-center">
+                <div class="col-md-4 text-center">
+                    <div class="pb-2">
+                        <a href="/portfolio/" title="Soumya Thakur | Game Developer">
+                            <img alt="Footer logo" src="/portfolio/images/mainpage/portfolio_icon.jpg" height="40px" width="40px">
+                        </a>
+                    </div>
+                    &copy; 2026 All Rights Reserved
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Prism Syntax Highlighting Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
+    
+    <script src="/portfolio/js/scroll.js"></script>
+</body>
+</html>

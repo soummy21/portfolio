@@ -51,14 +51,16 @@
     opacity: 0.9;
 }
 
+/* Technical Callout Boxes (Blockquotes) */
 #single .page-content blockquote {
-    padding: 20px 30px;
-    border-left: 6px solid var(--primary-color) !important;
-    color: var(--text-secondary-color) !important;
-    font-weight: 600;
-    font-size: 20px;
-    margin: 30px 0;
-    border-radius: 5px;
+    padding: 1.25rem 1.5rem;
+    border-left: 4px solid #007bff !important;
+    background: rgba(0, 123, 255, 0.05) !important;
+    color: var(--text-color) !important;
+    font-size: 1.05rem;
+    margin: 2rem 0;
+    border-radius: 0 8px 8px 0;
+    box-shadow: inset 0 0 20px rgba(0, 123, 255, 0.02);
 }
 
 #single .page-content blockquote, #single .page-content blockquote * {
@@ -100,24 +102,37 @@
     color: var(--secondary-color) !important;
 }
 
-/* code */
+/* =========================================================
+   ENGINEERING CODE BLOCKS
+   ========================================================= */
 
+/* The main code window */
 #single .page-content pre {
-  border-radius: 0.7em !important;
-  margin: 5px;
-  margin-bottom: 2em;
-  padding: 2em;
-  background-color: var(--secondary-color) !important;
-  color: var(--text-secondary-color) !important;
-  max-height: 450px;
+    border-radius: 8px !important;
+    margin: 1.5em 0 2.5em 0;
+    padding: 1.5em;
+    background-color: #1e1e1e !important; /* Classic VS Code Dark background */
+    max-height: 500px;
+    overflow-y: auto;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
 }
 
+/* The code text inside the window */
 #single .page-content pre > code {
-  color: var(--text-secondary-color) !important;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace !important;
+    color: #d4d4d4 !important; /* Soft silver for code readability */
+    font-size: 0.9rem;
 }
 
+/* Inline code words (e.g. `std::vector` inside a paragraph) */
 #single .page-content code {
-  color: var(--primary-color) !important;
+    color: #38bdf8 !important; /* A sharp tech blue */
+    background-color: rgba(56, 189, 248, 0.1) !important; 
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    font-family: 'Consolas', 'Monaco', monospace !important;
+    font-size: 0.85em;
 }
 
 /* kbd and mark */
@@ -255,6 +270,63 @@
 }
 
 #single aside.social .social-content ul li:hover a {
+    opacity: .8;
+    color: var(--primary-color);
+}
+
+/* aboutImg */
+
+#single aside.aboutImg {
+    padding: .7rem 1rem;
+}
+
+#single aside.aboutImg img {
+    border-radius: 1.5rem !important;
+    position: relative;
+    /* box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.2); */
+    max-width: 100%;
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+    #single aside.aboutImg img {
+        width: 60%;
+    }
+ }
+
+
+#single aside.aboutImg h5 {
+    margin: .7em 0;
+    margin-bottom: 1em;
+    color: var(--text-color);
+}
+
+#single aside.aboutImg .img-icon img {
+    width: 1em;
+}
+
+#single aside.aboutImg .aboutImg-content {
+    margin-bottom: 1em;
+    opacity: 0.9;
+}
+
+#single aside.aboutImg .aboutImg-content ul {
+    margin-bottom: 1em;
+    opacity: 0.9;
+}
+
+#single aside.aboutImg .aboutImg-content ul li a {
+    border: 1px solid var(--primary-color);
+    padding: .7rem;
+    color: var(--text-color);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#single aside.aboutImg .aboutImg-content ul li {
+    margin: .7rem .5rem;
+    margin-left: 0;
+}
+
+#single aside.aboutImg .aboutImg-content ul li:hover a {
     opacity: .8;
     color: var(--primary-color);
 }

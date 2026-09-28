@@ -1,0 +1,527 @@
+
+    /*------Common---------*/
+    :root {
+        --text-color: #343a40;
+        --text-secondary-color: #6c757d;
+        --background-color: #eaedf0;
+        --secondary-background-color: #64ffda1a;
+        --primary-color: #007bff;
+        --secondary-color: #f8f9fa;
+
+         
+        --text-color-dark: #e4e6eb;
+        --text-secondary-color-dark: #b0b3b8;
+        --background-color-dark: #18191a;
+        --secondary-background-color-dark: #212529;
+        --primary-color-dark: #ffffff;
+        --secondary-color-dark: #212529;
+    }
+
+    /*------Body---------*/
+    body {
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        text-align: left;
+        
+    }
+
+    /* =========================================================
+   STICKY NAVBAR
+   ========================================================= */
+header {
+    position: sticky !important;
+    top: 0;
+    z-index: 1050; 
+    background-color: var(--background-color) !important; /* Matches Light/Dark mode automatically */
+    
+    /* Optional: Adds a subtle drop shadow so it pops out from the scrolling page */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); 
+}
+
+
+/* =========================================================
+   HERO & PROJECTS RESPONSIVE SPACING (3-TIER)
+   ========================================================= */
+#hero {
+    min-height: auto !important;
+}
+
+/* 1. MOBILE  */
+@media (max-width: 750px) {
+    #hero {
+        padding-top: 2rem !important; 
+        padding-bottom: 1rem !important; 
+    }
+    #projects {
+        margin-top: 15rem !important;
+        padding-top: 1rem !important;
+    }
+}
+
+/* 2. TABLET / SMALL LAPTOP */
+@media (min-width: 751px) and (max-width: 1199px) {
+    #hero {
+        padding-top: 5rem !important;
+        padding-bottom: 2rem !important; 
+    }
+    #projects {
+        /* Standard, clean gap for tablets so there is no massive void */
+        margin-top: 20rem !important; 
+        padding-top: 2rem !important;
+    }
+}
+
+/* 3. LARGE DESKTOP (1200px and up) */
+@media (min-width: 1200px) {
+    #hero {
+        padding-top: 6rem !important;
+        padding-bottom: 5rem !important; 
+    }
+    #projects {
+        /* Locks your 25rem clearance specifically to wide screens */
+        margin-top: 25rem !important; 
+    }
+}
+
+
+/* Force icons to white in dark mode, overriding any cache */
+.dark .theme-icon {
+    filter: invert(1) brightness(1000%) !important;
+}
+
+/* --- Sleek Platform Filter Buttons --- */
+#platform-tabs .nav-link {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-color-dark);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 30px;
+    
+    /* THE FIX: Drastically reduced padding and slightly smaller text */
+    padding: 0.35rem 1.2rem; 
+    font-size: 0.85rem; 
+    
+    font-weight: 600;
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+}
+
+#platform-tabs .nav-link:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+#platform-tabs .nav-link.active {
+    background: #ffffff;
+    color: #121316 !important;
+    border-color: #ffffff;
+}
+
+/* Make the number badge smaller so it doesn't stretch the button vertically */
+#platform-tabs .nav-link .badge {
+    background: rgba(0, 0, 0, 0.2);
+    color: inherit;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    padding: 0.3em 0.6em;
+    margin-left: 8px; /* Adds clean spacing between text and number */
+}
+
+#platform-tabs .nav-link.active .badge {
+    background: #212529;
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   PROJECT GRID MEDIA (Forced 16:9 Heights)
+   ========================================================= */
+
+/* 1. The Trap: This MUST have position: relative to keep images in the card! */
+.video-responsive-wrapper {
+    position: relative !important;
+    width: 100%;
+    padding-bottom: 56.25%; /* Math for perfect 16:9 ratio */
+    height: 0;
+    overflow: hidden !important;
+    background: #000;
+}
+
+/* 2. The Media: Forces BOTH videos and images to fill the box perfectly */
+/* Update your existing selector around line 133 of custom.css */
+.video-responsive-wrapper iframe,
+.video-responsive-wrapper img,
+.video-responsive-wrapper video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    object-fit: cover;
+}
+
+/* 3. The Glass Overlay: Blocks iframe from stealing hovers/clicks */
+.video-responsive-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10; 
+    cursor: pointer;
+}
+
+/* 3. The Card Animation */
+.project-strip {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.project-strip:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3) !important;
+}
+
+.project-strip-content h3 {
+    font-size: 2rem;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+}
+
+.project-pitch {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+.project-bullets {
+    font-size: 1.05rem;
+    line-height: 1.65;
+}
+
+
+/* Ensure content column centers and pads cleanly */
+.project-strip-content {
+    padding: 1.75rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Tech tag pills */
+.badge-tech {
+    background: rgba(255, 255, 255, 0.07);
+    color: #93c5fd;
+    font-family: monospace;
+    font-size: 0.8rem;
+    padding: 0.35rem 0.65rem;
+    border-radius: 6px;
+    margin-right: 0.35rem;
+    margin-bottom: 0.35rem;
+    display: inline-block;
+}
+
+/* Status / Category Badges */
+.status-pill {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+}
+
+/* =========================================================
+   FLAGSHIP WIDE CARD (For Mythbound)
+   ========================================================= */
+.cinematic-card-wide {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+}
+
+.cinematic-card-wide:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* The Background Image */
+.cinematic-bg-wide {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+    /* Blurs the background image slightly so it doesn't compete with the video */
+    filter: blur(0.25px) brightness(1); 
+    transform: scale(1.05); /* Prevents the blur from showing white edges */
+}
+
+/* The Dark Gradient Overlay */
+.cinematic-gradient-wide {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    /* Darkens the edges so text is perfectly readable */
+    background: linear-gradient(to right, rgba(11,12,13,0.95) 0%, rgba(11,12,13,0.85) 50%, rgba(11,12,13,0.95) 100%);
+    z-index: 2;
+}
+
+/* Keeps the internal grid safely above the background layers */
+.cinematic-content-wide {
+    position: relative;
+    z-index: 3;
+}
+
+
+/* =========================================================
+   UNIVERSAL CINEMATIC UI COMPONENTS
+   ========================================================= */
+
+/* Typography */
+.cinematic-title {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.03em;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+}
+
+.cinematic-title-lg { font-size: 2.6rem; }
+.cinematic-title-sm { font-size: 1.6rem; }
+
+
+.cinematic-date {
+    color: #e8e8eb;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+}
+
+.cinematic-role {
+    color: #ffc107; /* Or #fca311 for a slightly deeper gold */
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 1rem;
+}
+.cinematic-desc {
+    color: #f4f4f5;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.cinematic-bullets {
+    color: #e4e4e7;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    padding-left: 1.2rem;
+}
+
+/* Glassmorphism Tech Pills */
+.tech-pill-glass {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    padding: 0.3rem 0.7rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    backdrop-filter: blur(4px);
+    display: inline-block;
+}
+
+/* Glassmorphism Buttons */
+.btn-glass {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 6px;
+    backdrop-filter: blur(4px);
+    transition: all 0.2s ease;
+}
+
+.btn-glass:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* Custom Solid White Button Override */
+.btn-solid-white {
+    background: #ffffff;
+    color: #000000;
+    border: none;
+    font-weight: 700;
+    border-radius: 6px;
+    transition: transform 0.2s;
+}
+.btn-solid-white:hover {
+    transform: scale(1.02);
+}
+
+
+/* =========================================================
+   TECH & PLATFORM ICONS
+   ========================================================= */
+.icon-tech {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    /* Inverts the black PNGs to white, and drops opacity slightly to match text */
+    filter: invert(1);
+    transition: filter 0.2s ease, transform 0.2s ease;
+}
+
+.icon-tech-mid {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    /* Inverts the black PNGs to white, and drops opacity slightly to match text */
+    filter: invert(1);
+    transition: filter 0.2s ease, transform 0.2s ease;
+}
+
+.icon-tech:hover {
+    /* Brightens to pure white and scales up slightly on hover */
+    transform: translateY(-4px);
+}
+
+/* For full-color icons (No Inversion) */
+.icon-tech-color {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    opacity: 1; /* Dims it slightly so it blends with the dark theme */
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.icon-tech-color:hover {
+    transform: translateY(-4px);
+}
+
+/* =========================================================
+   HERO TECH ICON BAR
+   ========================================================= */
+.hero-tech-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem; /* Creates clean breathing room above the buttons */
+}
+
+/* Clean, wrapper-free tech icons */
+.hero-tech-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.hero-tech-icon-wrapper:hover {
+    transform: translateY(-2px); /* Keeps the upward bounce */
+}
+
+.hero-tech-icon {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    opacity: 0.9;
+    /* This tells the browser to treat black pixels as transparent */
+    mix-blend-mode: screen; 
+}
+
+.hero-tech-icon.icon-white {
+    filter: brightness(0) invert(1);
+}
+
+
+
+/* =========================================================
+   SCROLL DOWN ANIMATOR
+   ========================================================= */
+.scroll-indicator {
+    opacity: 0.9;
+    transition: opacity 0.25s ease;
+}
+
+.scroll-indicator:hover {
+    opacity: 1;
+}
+
+.scroll-indicator i {
+    color: var(--text-color); /* Matches your white text perfectly */
+}
+
+/* The smooth, gravity-based floating bounce */
+.animate-bounce {
+    animation: smooth-bounce 2.5s infinite cubic-bezier(0.45, 0.05, 0.55, 0.95);
+}
+
+@keyframes smooth-bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(12px); /* Drops down */
+    }
+    60% {
+        transform: translateY(6px); /* Micro-bounce up */
+    }
+}
+
+/* =========================================================
+   SCROLL INDICATOR RESPONSIVE SIZING
+   ========================================================= */
+/* 1. Mobile (Default - Matches your original clean, tight look) */
+.scroll-indicator-wrapper {
+    margin-top: 4rem; 
+}
+.scroll-indicator-text {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.scroll-indicator-icon {
+    font-size: 1.25rem;
+    color: #0d6efd; /* Bootstrap 5 Primary Blue */
+}
+
+/* 2. Tablet (Slightly larger to fill the space) */
+@media (min-width: 768px) {
+    .scroll-indicator-wrapper {
+        margin-top: 6rem;
+    }
+    .scroll-indicator-text {
+        font-size: 0.85rem;
+        letter-spacing: 0.2em;
+    }
+    .scroll-indicator-icon {
+        font-size: 2rem; 
+    }
+}
+
+/* 3. Large Desktop (Huge text, massive arrow, pushed deep down) */
+@media (min-width: 1200px) {
+    .scroll-indicator-wrapper {
+        margin-top: 12rem; /* Pushes it down the empty screen */
+    }
+    .scroll-indicator-text {
+        font-size: 1.2rem; /* Much bigger, prominent text */
+        letter-spacing: 0.25em;
+        margin-bottom: 1.5rem; /* More breathing room above the arrow */
+    }
+    .scroll-indicator-icon {
+        font-size: 3.5rem; /* Massive chevron */
+    }
+}
+
+/* Force the browser to disable native snapping */
+html { scroll-behavior: auto !important; }
